@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Emerging from Fear — Hope After Heart Failure</title>
+  <meta name="description" content="Read Chapter 1 of Hope After Heart Failure — Emerging from Fear: Learning to Breathe Again After the Storm." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ===== Chapter reading page ===== */
+    .ch-hero {
+      background: var(--navy); color: var(--on-dark);
+      padding: 4.5rem 2rem 4rem; text-align: center;
+    }
+    .ch-hero .eyebrow { margin-bottom: 1.2rem; }
+    .ch-hero h1 {
+      color: #fff; font-size: clamp(2.4rem, 5vw, 3.8rem);
+      margin: 0 auto .8rem; max-width: 900px;
+    }
+    .ch-hero h1 em { color: var(--gold-light); font-weight: 400; }
+    .ch-hero .ch-sub {
+      font-style: italic; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      color: var(--on-dark-soft); margin: 0 auto; max-width: 640px;
+    }
+    .ch-heart { color: var(--gold); font-size: 1.4rem; margin-bottom: 1.6rem; }
+
+    .reader { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .reader > p { margin: 0 0 1.5rem; font-size: 1.18rem; line-height: 1.75; }
+    .reader h2 {
+      font-size: 1.7rem; margin: 3rem 0 1.2rem; color: var(--navy);
+    }
+    .reader h2:first-child { margin-top: 0; }
+
+    .drop::first-letter {
+      font-family: var(--display); float: left; font-size: 4.2rem;
+      line-height: .82; padding: .35rem .7rem 0 0; color: var(--gold);
+    }
+
+    .scripture {
+      margin: 2.5rem 0; padding: 1.8rem 2rem; border-radius: 3px;
+      background: #fff; border: 1px solid var(--cream-2);
+      box-shadow: 0 4px 16px rgba(0,0,0,.04);
+      text-align: center; font-family: var(--display); font-style: italic;
+      font-size: 1.4rem; line-height: 1.5; color: var(--gold);
+    }
+    .scripture cite {
+      display: block; margin-top: 1rem; font-family: var(--body); font-style: normal;
+      font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+    }
+
+    .ch-divider { text-align: center; margin: 3.5rem 0; color: var(--gold); font-size: 1.2rem; }
+
+    /* Callout blocks (Reflection / Action / Meditation / Workbook) */
+    .callout {
+      margin: 3rem 0; padding: 2rem 2.2rem; border-radius: 3px;
+    }
+    .callout .eyebrow { margin-bottom: 1rem; }
+    .callout h3 {
+      font-size: 1.5rem; margin: 0 0 1.2rem; color: var(--navy);
+    }
+    .callout ol, .callout ul { margin: 0; padding-left: 1.3rem; }
+    .callout li { margin-bottom: 1rem; line-height: 1.6; }
+    .callout li:last-child { margin-bottom: 0; }
+
+    .callout.reflection { background: #fff; border: 1px solid var(--cream-2); }
+    .callout.action { background: #fff; border: 1px solid var(--cream-2); }
+    .callout.action h3 { color: var(--navy); }
+
+    .meditation {
+      background: var(--navy); color: var(--on-dark);
+      margin: 3.5rem 0; padding: 2.6rem 2.2rem; border-radius: 3px;
+    }
+    .meditation h3 { color: #fff; font-size: 1.6rem; margin: 0 0 1.4rem; }
+    .meditation p { color: var(--on-dark-soft); line-height: 1.8; margin: 0 0 1.2rem; font-size: 1.08rem; }
+    .meditation .scripture { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); box-shadow: none; color: var(--gold-light); }
+    .meditation .scripture cite { color: var(--on-dark-soft); }
+    .meditation .whisper { font-family: var(--display); font-style: italic; color: var(--gold-light); }
+
+    .workbook { background: #fff; border: 1px solid var(--cream-2); }
+    .workbook .prompt { margin: 0 0 .6rem; font-size: 1.1rem; color: var(--ink); line-height: 1.6; }
+    .workbook .prompt strong { color: var(--gold); font-family: var(--display); margin-right: .4rem; }
+    .writelines {
+      border: none;
+      height: 9.6rem; margin: 0 0 1.8rem;
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(2.4rem - 1px), var(--cream-2) calc(2.4rem - 1px), var(--cream-2) 2.4rem);
+    }
+    .writelines:last-child { margin-bottom: 0; }
+
+    /* Back / end CTA */
+    .ch-topbar {
+      max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .back-link { color: var(--ink-soft); font-size: .95rem; letter-spacing: .04em; }
+    .back-link:hover { color: var(--gold); }
+
+    .ch-end {
+      background: var(--cream-2); text-align: center; padding: 4rem 2rem;
+      margin-top: 3rem;
+    }
+    .ch-end h3 { font-size: 1.8rem; margin: 0 0 .8rem; color: var(--navy); }
+    .ch-end p { max-width: 520px; margin: 0 auto 1.8rem; color: var(--ink-soft); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <div class="ch-topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-heart">&#10084;</span>
+      <span class="brand-name">Hope After Heart Failure</span>
+    </a>
+    <a class="back-link" href="index.html">&#8592;&nbsp; Back to Home</a>
+  </div>
+
+  <!-- ============ CHAPTER HERO ============ -->
+  <section class="ch-hero">
+    <div class="ch-heart">&#10084;</div>
+    <p class="eyebrow center">Chapter One</p>
+    <h1>Emerging from <em>Fear</em></h1>
+    <p class="ch-sub">Learning to Breathe Again After the Storm</p>
+  </section>
+
+  <!-- ============ READER ============ -->
+  <article class="reader">
+    <p class="drop">The first breath after heart failure feels both miraculous and terrifying. You awaken in a world that looks the same but feels utterly new. Machines quiet. Lights dim. And in that silence, fear moves in quietly, insistently, whispering questions you can't easily answer: What if it happens again? What if I close my eyes and don't wake up? Even in gratitude, anxiety can shadow hope. Yet, this fear is not your ending; it's the first tremor of rebirth.</p>
+
+    <h2>When Fear Feels Like a Second Heartbeat</h2>
+    <p>Fear after survival is natural. Your mind remembers what your body endured. Every unusual flutter, every skipped beat, triggers a rush of questions. The body and soul both crave safety&mdash;but they heal at different speeds. While doctors tend to the physical heart, fear often lingers quietly in the emotional one.</p>
+    <p>No one warns you that living again can feel as frightening as dying. But here is truth: fear doesn't mean you've lost faith; it means faith now has something real to work with. In spiritual terms, courage doesn't arrive without something to overcome. God doesn't shame you for fear&mdash;He meets you there.</p>
+
+    <blockquote class="scripture">
+      &ldquo;Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you.&rdquo;
+      <cite>Isaiah 41:10</cite>
+    </blockquote>
+
+    <p>Faith does not erase fear; it transforms it. You can tremble and still trust. The presence of God doesn't prevent storms&mdash;it anchors you through them. He does not remove fear by command but by companionship.</p>
+
+    <h2>The Noise That Never Stops</h2>
+    <p>Once home from the hospital, silence becomes louder than any alarm. The monitors are gone, and their absence becomes its own unease. You find yourself listening to your pulse, measuring breaths, unable to relax fully into peace. This vigilance, though exhausting, is your heart's way of confirming that life continues. The same awareness that sparks fear can be retrained to awaken gratitude.</p>
+    <p>When anxiety spikes, pause. Breathe deeply&mdash;in through your nose, out through your lips&mdash;and whisper, &lsquo;You are here, God. And so am I.&rsquo; In that small rhythm, the noise quiets. Fear loses oxygen where presence grows.</p>
+
+    <blockquote class="scripture">
+      &ldquo;I sought the Lord, and He answered me; He delivered me from all my fears.&rdquo;
+      <cite>Psalm 34:4</cite>
+    </blockquote>
+
+    <p>The psalmist did not say God prevented fear, but that He delivered him from it. Deliverance implies movement from panic toward peace, from chaos into calm. That journey unfolds through patience, prayer, and presence, often one breath at a time.</p>
+
+    <h2>Trusting a Body That Once Betrayed You</h2>
+    <p>Perhaps the hardest part of recovery is learning to trust your own flesh again. The heart that once faltered now beats on, but confidence takes longer to return. Every cough, twinge, or strain can stir panic. You ask, Can I climb those stairs? Should I walk farther? There's vulnerability in every motion&mdash;but also deep grace.</p>
+    <p>Your body, fragile though it feels, is not your enemy. It fought for you. It carried you through trauma, cooperated with medicine, and now labors daily to restore balance. Every scar is proof of God's sustaining mercy. Recovery is not about rushing back to strength but learning to live in rhythm with your body again&mdash;slow, steady, surrendered.</p>
+
+    <blockquote class="scripture">
+      &ldquo;Peace I leave with you; My peace I give you. Not as the world gives. Do not let your hearts be troubled and do not be afraid.&rdquo;
+      <cite>John 14:27</cite>
+    </blockquote>
+
+    <p>This divine peace is not the absence of symptoms&mdash;it's the presence of assurance. You are learning to trust the miracle beating inside you not because it's infallible, but because it's now a place where grace resides.</p>
+
+    <h2>Translating Fear into Faith</h2>
+    <p>Fear is energy. Left unchecked, it consumes. Redirected, it fuels prayer and awareness. Use fear as signal, not sentence&mdash;let it remind you to breathe, to pause, to praise. In moments when anxiety surges, shift your focus from danger to dialogue: &lsquo;Lord, what are You showing me right now? Where are You in this?&rsquo;</p>
+    <p>Faith doesn't silence every fear, but it changes its volume. With time, what once roared becomes background noise beneath stronger melodies of gratitude and courage.</p>
+
+    <h2>The Ministry of Each Breath</h2>
+    <p>Once you have faced mortality, every inhale becomes a confession of gratitude. You begin to realize: your breath is prayer. Each one declares, I am still here. And that truth&mdash;humble, defiant, holy&mdash;can overpower any fear's hold on you.</p>
+    <p>You don't have to do something grand to honor survival. Simply noticing your existence is sacred practice. Look for God's fingerprints in ordinary life: sunlight warming your face, the laughter of someone you love, the sound of your own heartbeat at rest. These are not small things&mdash;they are resurrection made visible.</p>
+
+    <!-- Reflection -->
+    <div class="callout reflection">
+      <p class="eyebrow">For Reflection</p>
+      <h3>Sitting With These Questions</h3>
+      <ol>
+        <li>What situations, sounds, or sensations trigger your fear most often&mdash;and what scriptural truth can you speak into that moment?</li>
+        <li>How has fear shown you what you cherish most about life?</li>
+        <li>Where have you already noticed glimpses of courage or peace returning?</li>
+      </ol>
+    </div>
+
+    <!-- Action -->
+    <div class="callout action">
+      <p class="eyebrow">A Gentle Practice</p>
+      <h3>Action Steps</h3>
+      <ul>
+        <li>Begin and end each day by placing your hand over your heart, whispering: &lsquo;Thank You, Lord, for another heartbeat.&rsquo;</li>
+        <li>Write one sentence each night beginning with: &lsquo;Today, I felt brave when&hellip;&rsquo; Even small acts count.</li>
+        <li>When fear rises, recite John 14:27 slowly. Let peace replace panic with every line.</li>
+        <li>Share a conversation with someone else recovering, confessing not only your fears but also your faith in progress.</li>
+      </ul>
+    </div>
+
+    <p>Emerging from fear is not about erasing anxiety, it's about transforming it into awareness of grace. Through fear, you learn reverence; through weakness, dependence; through trembling, faith. Courage doesn't look like running; it looks like resting in God's arms while storms pass overhead. You survived the heart's silence&mdash;now you are learning to hear its new song. And that song echoes with this truth: perfect love still drives out fear.</p>
+
+    <div class="ch-divider">&#10084;</div>
+
+    <!-- Clinical companion -->
+    <h2>Learning to Live Without Fear Again</h2>
+    <p style="font-style:italic; color:var(--ink-soft); margin-top:-0.6rem;">Understanding and Managing Post-Heart Failure Anxiety</p>
+
+    <p><strong>Understanding the Nature of Post-Event Fear.</strong> Following a major cardiac event, the brain and body remain on alert. Sensations such as chest tightness, fatigue, or skipped beats can trigger memories of the initial trauma, convincing survivors that danger is near. This response, both physiological and psychological, may cause chronic stress, restlessness, and avoidance of activity. Over time, the constant vigilance leads to diminished quality of life and slowed rehabilitation. Research by the American Psychological Association (2020) indicates that approximately 20 percent of cardiac patients develop measurable post-event anxiety or post-traumatic stress symptoms, which in turn increase cardiovascular strain and delay healing. Early recognition and care are essential for long-term stability.</p>
+
+    <p><strong>Restoring Confidence Through Cardiac Rehabilitation.</strong> Structured cardiac rehabilitation remains the strongest bridge between fear and renewed trust. These supervised programs rebuild stamina through gradual, safe exercise, while medical oversight helps participants distinguish between normal exertion and genuine warning signs. Evidence from the American Heart Association (2022) and Mayo Clinic (2023) shows that patients who complete rehabilitation experience a 25&ndash;30 percent lower recurrence rate of cardiac events and report greater emotional well-being. Rehabilitation retrains the body and mind together, transforming fear into familiarity and anxious caution into competence.</p>
+
+    <p><strong>Addressing Psychological and Emotional Recovery.</strong> Emotional healing is as critical as physical therapy. Intrusive memories and hyper-focus on bodily sensations often signal residual trauma. Counseling&mdash;especially Cognitive Behavioral Therapy (CBT)&mdash;is proven effective in managing fear of recurrence by reframing catastrophic thoughts with factual understanding. Complementary practices such as mindfulness meditation, diaphragmatic breathing, and progressive muscle relaxation reduce overactivation of the sympathetic nervous system, improving heart rate variability and calm focus (Harvard Health Publishing, 2023). Consistent practice teaches survivors to view sensations as information rather than threats, rebuilding trust in their bodies.</p>
+
+    <p><strong>Improving Sleep and Reducing Nighttime Anxiety.</strong> Evenings often amplify anxiety. Quiet and solitude can bring awareness of heartbeat rhythms that trigger fear. This hyper-vigilance frequently leads to insomnia, aggravating fatigue and emotional fragility. Developing healthy sleep rituals&mdash;consistent bedtimes, avoiding caffeine, limiting screens, and practicing gratitude reflection before rest&mdash;helps restore stability. Journaling or prayer before sleep can anchor thoughts away from fear toward peace.</p>
+
+    <p><strong>Reclaiming Control Through Knowledge.</strong> Anxiety often thrives in uncertainty. Learning about heart function, medications, and physical limits replaces fear with informed confidence. Education transforms unpredictable symptoms into understandable signals. The American Heart Association (2022) emphasizes that well-informed patients demonstrate higher treatment adherence and reduced emotional distress. Engaging actively with healthcare teams&mdash;reviewing prescriptions, asking questions, understanding side effects&mdash;empowers survivors to participate in their recovery. Knowledge cultivates calm.</p>
+
+    <p><strong>Reintegration Into Daily Life.</strong> Recovery is gradual, and re-entering normal routines may feel intimidating. Yet gentle, progressive activity rebuilds the nervous system's sense of safety. Choose one small goal each day: a short walk, preparing a meal, or rejoining a small gathering. These acts re-train both heart and mind to interpret daily life as safe and livable. Over time, movement becomes ease instead of caution.</p>
+
+    <p><strong>The Role of Spiritual Recovery.</strong> Cardiac events often open deeper questions of meaning and mortality. Some survivors find comfort through faith traditions; others through mindfulness, nature, or community service. Research summarized by the Journal of Cardiopulmonary Rehabilitation and Prevention (2021) shows that attending to spiritual wellbeing improves cardiac outcomes and lowers rates of depression. Prayer, meditation, or reflective gratitude help transform the focus from loss to purpose.</p>
+
+    <p><strong>Transforming Fear Into Motivation.</strong> When understood, fear becomes a teacher rather than an enemy. It reminds survivors of life's value and the need for mindful living&mdash;nutritious food, steady care, emotional awareness, and consistent follow-up. The goal is not to erase fear but to master it. Fear evolves into awareness; awareness fosters gratitude; gratitude becomes strength.</p>
+
+    <!-- Meditation -->
+    <div class="meditation">
+      <p class="eyebrow">Guided Meditation</p>
+      <h3>Awakening the Heart</h3>
+      <p>Close your eyes and take a slow, deep breath in &hellip; hold for a moment &hellip; then gently release. Let the quiet settle around you. You have survived much&mdash;and now this stillness is your teacher.</p>
+      <p>Bring your attention to the center of your chest. Notice your heartbeat&mdash;soft, steady, present. Your heart knows the rhythm of survival, but now it learns to beat in peace.</p>
+      <p>Take another breath. As you inhale, imagine drawing in light&mdash;calm, warm, compassionate. As you exhale, let go of numbness, guilt, and the need to feel &ldquo;normal.&rdquo; Let your breath do the work. Healing often begins much quieter than expected.</p>
+      <p>Now visualize soft light flowing through your heart like sunrise across gentle hills. It lifts fog and reveals a new landscape within you&mdash;familiar, yet renewed. You may not feel joy yet, but it is waiting&mdash;like the first bird at dawn.</p>
+      <blockquote class="scripture">
+        &ldquo;The Lord is close to the brokenhearted and saves those who are crushed in spirit.&rdquo;
+        <cite>Psalm 34:18</cite>
+      </blockquote>
+      <p>Let these words rest in you. You are not broken beyond repair; you are being restored through compassion. Each pulse, each tear, each breath declares: Life continues, and so does love.</p>
+      <p>Whisper softly: <span class="whisper">Awaken, my heart, not in fear, but in trust.</span> Feel warmth begin to respond, like tiny embers returning to flame. Sit in this glow of divine presence. Your emotions need time, but life is already stirring.</p>
+      <p>When you open your eyes, carry this truth with you: <span class="whisper">The heart that once ached now beats with grace again.</span></p>
+    </div>
+
+    <!-- Workbook -->
+    <div class="callout workbook">
+      <p class="eyebrow">Chapter 1 Workbook</p>
+      <h3>Fear of Another Cardiac Event</h3>
+      <p style="color:var(--ink-soft); margin:0 0 1.8rem; line-height:1.6;">Take your time with each prompt. There are no right or wrong answers&mdash;only opportunities for understanding and growth.</p>
+
+      <p class="prompt"><strong>1.</strong>Think about the moment you realized how serious your heart condition was. What emotions did you feel then, and how have those feelings changed since?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>2.</strong>Describe a time when fear of another cardiac event kept you from doing something you wanted to. How did that make you feel physically and emotionally?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>3.</strong>What helps you feel safe or in control when anxiety about your heart arises? List people, activities, or thoughts that bring you calm.</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>4.</strong>Reflect on one small victory in your recovery that made you realize you were stronger than your fear. What did that experience teach you?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>5.</strong>In your own words, what does living&mdash;not just surviving&mdash;mean to you now that you've walked through this experience?</p>
+      <div class="writelines"></div>
+    </div>
+  </article>
+
+  <!-- ============ END CTA ============ -->
+  <section class="ch-end">
+    <img class="hero-cover small" src="images/book-cover.png" alt="Hope After Heart Failure book cover" style="margin-bottom:1.8rem;" />
+    <h3>Continue the Journey</h3>
+    <p>This was Chapter 1 of ten. The full book walks with you from diagnosis through living whole again&mdash;body, mind, spirit, and community.</p>
+    <a class="btn btn-primary" href="index.html#get">Get the Full Book</a>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-bar" style="justify-content:center; border-top:none;">
+      <p class="footer-url"><span class="gold">&#10084;</span> www.HopeAfterHeartFailure.com &nbsp;&bull;&nbsp; &copy; 2026 Phoenix Rising Media LLC</p>
+    </div>
+  </footer>
+
+</body>
+</html>
