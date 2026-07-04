@@ -236,6 +236,7 @@ If cognitive changes began or worsened after a medication was introduced or a do
     <h4>Hope After Heart Failure</h4>
     <p>A survivor's guide for recovery after cardiac crisis — written by a two-time heart failure survivor. Because surviving is just the beginning.</p>
     <a class="btn" href="https://hopeafterheartfailure.com/chapter-1">📖 Get Chapter 1 Free</a>
+    <a class="btn hahf-buy" href="#" style="margin-left:.5rem">📚 Buy the Book</a>
   </div>
   <div class="signup">
     <h4 class="signup-title">✉ Stay Connected</h4>
@@ -282,6 +283,45 @@ If cognitive changes began or worsened after a medication was introduced or a do
         document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done();
       }
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var modal = document.createElement('div');
+  modal.className = 'hahf-modal-overlay';
+  modal.innerHTML =
+    '<div class="hahf-modal" role="dialog" aria-modal="true" aria-labelledby="hahf-modal-title">' +
+    '  <button class="hahf-modal-close" aria-label="Close">&times;</button>' +
+    '  <p class="hahf-modal-eyebrow">Hope After Heart Failure</p>' +
+    '  <h3 id="hahf-modal-title">New Release Coming Soon</h3>' +
+    '  <p>The new edition of <em>Hope After Heart Failure</em> is on its way. Sign up now and you\'ll be notified the moment it\'s released.</p>' +
+    '  <form class="hahf-notify-form">' +
+    '    <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />' +
+    '    <button type="submit" class="hahf-modal-btn">Sign Up Now for Notification</button>' +
+    '  </form>' +
+    '  <p class="hahf-modal-success">You\'re on the list. You\'ll be the first to know. &#10084;</p>' +
+    '  <p class="hahf-modal-fine">No spam, ever. Unsubscribe anytime.</p>' +
+    '</div>';
+  document.body.appendChild(modal);
+  function openModal(e){ e.preventDefault(); modal.classList.add('open'); }
+  function closeModal(){ modal.classList.remove('open'); }
+  document.querySelectorAll('.hahf-buy').forEach(function(a){ a.addEventListener('click', openModal); });
+  modal.querySelector('.hahf-modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+  var form = modal.querySelector('.hahf-notify-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = form.querySelector('input[name="email"]').value.trim();
+    if (!email) return;
+    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'email': email }).toString();
+    var done = function(){
+      form.style.display = 'none';
+      modal.querySelector('.hahf-modal-success').style.display = 'block';
+      setTimeout(closeModal, 3500);
+    };
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body }).then(done).catch(done);
   });
 })();
 </script>
