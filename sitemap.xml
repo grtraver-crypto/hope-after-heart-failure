@@ -20,4 +20,48 @@
     <loc>https://hopeafterheartfailure.com/terms-of-service.html</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/facing-fear-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/fatigue-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/emotional-numbness-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/rebuilding-identity-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/relationships-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/trusting-your-body-again.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/managing-medications-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/cardiac-brain-fog-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/living-whole-again-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/living-with-purpose-after-heart-failure.html</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>

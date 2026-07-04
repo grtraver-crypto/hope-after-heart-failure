@@ -272,5 +272,573 @@
     </div>
   </footer>
 
+
+  <!-- ============ CHAT WIDGET ============ -->
+  <style>
+    /* ===== RESET & BASE (scoped to widget only) ===== */
+    #hahf-chat-btn, #hahf-chat-btn::before, #hahf-chat-btn::after,
+    #hahf-chat-window, #hahf-chat-window *, #hahf-chat-window *::before, #hahf-chat-window *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+    }
+    /* ===== CHAT BUTTON (Floating) ===== */
+    #hahf-chat-btn {
+      position: fixed !important;
+      bottom: 24px !important;
+      right: 24px !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B2500, #A0522D);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(139,37,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999999 !important;
+    }
+    #hahf-chat-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(139,37,0,0.5);
+    }
+    #hahf-chat-btn svg { width: 30px; height: 30px; }
+    #hahf-chat-btn .pulse-ring {
+      position: absolute;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      border: 3px solid rgba(139,37,0,0.3);
+      animation: hahf-pulse 2s ease-out infinite;
+    }
+    @keyframes hahf-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    /* ===== CHAT WINDOW ===== */
+    #hahf-chat-window {
+      position: fixed !important;
+      bottom: 96px !important;
+      right: 24px !important;
+      width: 380px;
+      max-height: 560px;
+      border-radius: 16px;
+      background: #FFF9F2;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999998 !important;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      border: 1px solid #E8D5C0;
+    }
+    #hahf-chat-window.open {
+      display: flex;
+      animation: hahf-slide-up 0.35s ease-out;
+    }
+    @keyframes hahf-slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* ===== HEADER ===== */
+    #hahf-chat-header {
+      background: linear-gradient(135deg, #8B2500, #6B1D00);
+      color: #fff;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    #hahf-chat-header .header-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    #hahf-chat-header .header-icon svg { width: 20px; height: 20px; fill: #fff; }
+    #hahf-chat-header .header-text h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 2px; letter-spacing: 0.3px;
+    }
+    #hahf-chat-header .header-text p {
+      font-size: 11px; opacity: 0.8; font-style: italic;
+    }
+    #hahf-chat-close {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #fff; cursor: pointer;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    #hahf-chat-close:hover { background: rgba(255,255,255,0.15); }
+    #hahf-chat-close svg { width: 16px; height: 16px; stroke: #fff; }
+    /* ===== MESSAGES AREA ===== */
+    #hahf-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 380px;
+      min-height: 280px;
+      scroll-behavior: smooth;
+    }
+    #hahf-chat-messages::-webkit-scrollbar { width: 5px; }
+    #hahf-chat-messages::-webkit-scrollbar-track { background: transparent; }
+    #hahf-chat-messages::-webkit-scrollbar-thumb { background: #D4B896; border-radius: 10px; }
+    /* ===== BUBBLES ===== */
+    .hahf-msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: hahf-fade-in 0.3s ease-out;
+    }
+    @keyframes hahf-fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hahf-msg.bot {
+      background: #F0E4D4;
+      color: #3E2723;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .hahf-msg.user {
+      background: linear-gradient(135deg, #8B2500, #A0522D);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .hahf-msg .chapter-ref {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 12px;
+      background: rgba(139,37,0,0.1);
+      border-radius: 8px;
+      font-size: 12px;
+      color: #8B2500;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .hahf-msg .resource-link {
+      display: block;
+      margin-top: 6px;
+      color: #8B2500;
+      text-decoration: underline;
+      font-size: 13px;
+    }
+    /* ===== QUICK REPLIES ===== */
+    .hahf-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .hahf-quick-reply {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #8B2500;
+      background: transparent;
+      color: #8B2500;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .hahf-quick-reply:hover {
+      background: #8B2500;
+      color: #fff;
+    }
+    /* ===== TYPING INDICATOR ===== */
+    .hahf-typing {
+      display: flex;
+      gap: 5px;
+      padding: 12px 16px;
+      align-self: flex-start;
+    }
+    .hahf-typing span {
+      width: 8px; height: 8px;
+      background: #C4A882;
+      border-radius: 50%;
+      animation: hahf-bounce 1.4s ease-in-out infinite;
+    }
+    .hahf-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .hahf-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes hahf-bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+    /* ===== INPUT AREA ===== */
+    #hahf-chat-input-area {
+      padding: 12px 16px;
+      border-top: 1px solid #E8D5C0;
+      display: flex;
+      gap: 8px;
+      background: #FFF9F2;
+    }
+    #hahf-chat-input {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 24px;
+      border: 1.5px solid #D4B896;
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      color: #3E2723;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #hahf-chat-input::placeholder { color: #B89A7A; font-style: italic; }
+    #hahf-chat-input:focus { border-color: #8B2500; }
+    #hahf-chat-send {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B2500, #A0522D);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    #hahf-chat-send:hover { transform: scale(1.05); }
+    #hahf-chat-send svg { width: 18px; height: 18px; fill: #fff; }
+    /* ===== MOBILE ===== */
+    @media (max-width: 480px) {
+      #hahf-chat-window {
+        width: calc(100vw - 16px);
+        right: 8px;
+        bottom: 88px;
+        max-height: 70vh;
+        border-radius: 12px;
+      }
+      #hahf-chat-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 52px;
+        height: 52px;
+      }
+      #hahf-chat-btn svg { width: 24px; height: 24px; }
+    }
+  </style>
+  <!-- Floating Chat Button -->
+  <button id="hahf-chat-btn" aria-label="Open chat">
+    <span class="pulse-ring"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+  </button>
+  <!-- Chat Window -->
+  <div id="hahf-chat-window">
+    <!-- Header -->
+    <div id="hahf-chat-header">
+      <div class="header-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="header-text">
+        <h3>Hope After Heart Failure</h3>
+        <p>Here to help. Always available.</p>
+      </div>
+      <button id="hahf-chat-close" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Messages -->
+    <div id="hahf-chat-messages"></div>
+    <!-- Input -->
+    <div id="hahf-chat-input-area">
+      <input id="hahf-chat-input" type="text" placeholder="Ask me anything..." autocomplete="off" />
+      <button id="hahf-chat-send" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+  <script>
+  (function() {
+    // ===== DOM ELEMENTS =====
+    const chatBtn = document.getElementById('hahf-chat-btn');
+    const chatWindow = document.getElementById('hahf-chat-window');
+    const chatClose = document.getElementById('hahf-chat-close');
+    const chatMessages = document.getElementById('hahf-chat-messages');
+    const chatInput = document.getElementById('hahf-chat-input');
+    const chatSend = document.getElementById('hahf-chat-send');
+    let isOpen = false;
+    let hasGreeted = false;
+    // ===== KNOWLEDGE BASE =====
+    const KB = {
+      about: {
+        keywords: ['about the book', 'what is this book', 'tell me about the book', 'what is hope after heart failure', 'about', 'book about', 'overview', 'summary of the book', 'what is the book about'],
+        response: `Hope After Heart Failure was written by Greg R. Traver — someone who has been where you are, not just once but twice. After surviving three catastrophic "widow maker" heart attacks and two separate battles with heart failure, Greg understands the fear that visits at 3 a.m., the grief of a body that no longer feels like your own, and the quiet miracle of still being here.\n\nThis book walks with you through ten chapters of honest, compassionate guidance — from the first terrifying days of recovery through the profound spiritual awakening that comes when you realize you are not just surviving. You are living.\n\nThe book covers Emotional Recovery, Rebuilding Strength, Faith & Healing, Cognitive Fog, Living Whole Again, and Finding Purpose.`,
+        chapter: '📖 About the Book — HopeAfterHeartFailure.com'
+      },
+      author: {
+        keywords: ['who wrote', 'author', 'greg', 'greg travers', 'greg r travers', 'who is the author', 'about the author', 'who wrote this book', 'writer'],
+        response: `Greg Traver spent decades chasing success, climbing the ladder, and running on an endless fuel of coffee, smoking, and stress — until his own body called a halt. After three catastrophic "widow maker" heart attacks and two separate battles with heart failure, against all odds, Greg survived — but the real journey began the day he woke up in the ICU and realized that life would never be the same.\n\nHe writes with the authority of someone who has lived what medicine can't explain and repeatedly defied the odds. This is the book Greg wished he had when his own journey began.\n\nAs Greg says: "I didn't write this book because I have all the answers. I wrote it because I've lived the questions — and I've seen what's possible on the other side of them."`,
+        chapter: '✍️ About the Author — Greg R. Traver'
+      },
+      ch1: {
+        keywords: ['fear', 'afraid', 'anxiety', 'scared', 'chapter 1', 'emerging from fear', 'panic', 'worry', 'fear of another event', 'fear of recurrence', 'nighttime anxiety', 'night fear', 'fear after heart failure', 'what if it happens again'],
+        response: `Fear after survival is natural. Your mind remembers what your body endured to avoid it happening again. Every unusual flutter and skipped beat triggers a rush of questions. No one warns you that living again can feel as frightening as dying.\n\nBut here's the truth: fear doesn't mean you've lost faith; it means your faith now has something real to work with. Courage doesn't arrive without the context of something to overcome.\n\nAs Isaiah 41:10 reminds us: "Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you."\n\nWhen anxiety spikes, pause. Breathe deeply — in through your nose, out through your lips — and whisper, "You are here, God. And so am I." In that small rhythm, the noise quiets.\n\nApproximately 20% of cardiac patients develop measurable post-event anxiety or PTSD symptoms, which increase cardiovascular strain and delay healing. Early recognition and care are essential. Cardiac rehabilitation, Cognitive Behavioral Therapy (CBT), and mindfulness meditation are proven tools for managing this fear.`,
+        chapter: '📖 Chapter 1 — Emerging from Fear: Learning to Breathe Again After the Storm'
+      },
+      ch2: {
+        keywords: ['fatigue', 'tired', 'exhaustion', 'weakness', 'strength', 'energy', 'chapter 2', 'renewing strength', 'rest', 'tiredness', 'rebuilding strength', 'physical weakness', 'low energy', 'no energy', 'always tired'],
+        response: `Fatigue can descend like an anchor in the months following heart failure. When energy feels unpredictable, just walking across a room can seem as daunting as running a marathon once did. Friends may say you look stronger, but inside you feel fragile, restless, half-alive.\n\nYet, beneath that weariness, the quiet work of renewal has already begun. Recovery often comes with invisible burdens — the body aches, but so does the mind. It vividly remembers what used to come so easily.\n\nAs Isaiah 40:29 promises: "He gives strength to the weary and increases the power of the weak." Even the faithful grow tired. This verse doesn't say we will never feel weak, but that our weakness invites God's strength to enter.\n\nRest is not avoidance; it is obedience. When you treat rest as integral healing instead of resisting it, fatigue becomes less of an enemy and more of a messenger. It whispers: slow down, breathe, let grace catch you.\n\nCardiac rehabilitation, energy conservation strategies, adequate hydration, balanced nutrition (low-sodium, heart-healthy eating), and restorative sleep all play crucial roles in rebuilding strength.`,
+        chapter: '📖 Chapter 2 — Renewing Strength: Finding Life in Each Small Victory'
+      },
+      ch3: {
+        keywords: ['depression', 'numb', 'numbness', 'sad', 'sadness', 'emotion', 'emotional', 'chapter 3', 'awakening the heart', 'spiritual depression', 'feel nothing', 'disconnected', 'emotional numbness', 'dont feel anything', 'no emotions', 'flat', 'empty', 'emptiness', 'why dont i feel grateful'],
+        response: `After the crisis subsides and the medical visits slow down, a quieter ache often emerges. The body is recovering, but the soul feels numb. Joy seems distant, laughter artificial, and faith muted by fatigue. It's not despair exactly; it's emptiness.\n\nDo not mistake this for a failure of spirit. In truth, it's the mind's attempt to protect what still feels fragile. When your mind endures extraordinary fear, it sometimes turns down the emotional volume to survive.\n\nAs Psalm 34:18 reminds us: "The Lord is close to the brokenhearted and saves those who are crushed in spirit." God doesn't rush this part of healing. He waits in the silence, patient and unwavering.\n\nEmotions don't return with fanfare. They appear gently: a burst of tears while washing dishes, a small ripple of laughter at something unexpected. These are signs that the heart is thawing. Treasure them.\n\nIf you're experiencing persistent numbness or depression, know that up to 40% of heart failure patients experience depression, which exacerbates fatigue and slows recovery. Counseling, peer support, and mindfulness practices can all help.`,
+        chapter: '📖 Chapter 3 — Awakening the Heart: Finding Light When the Spirit Feels Silent'
+      },
+      ch4: {
+        keywords: ['identity', 'who am i', 'purpose', 'lost myself', 'self', 'chapter 4', 'rediscovering self', 'lost identity', 'who am i now', 'meaning', 'meaning of life', 'lost purpose', 'new identity', 'reinvent', 'reinvention'],
+        response: `After a major illness rewrites your story, one of the first questions to surface is: "Who am I now?" Identity is formed by the routines, roles, and responsibilities that give life shape. But when a heart event interrupts that rhythm, those anchors can loosen.\n\nThis chapter is an invitation to rediscover, not rebuild, who you are. You're not starting from nothing; you're uncovering what has always dwelled within you.\n\nAs Jeremiah 29:11 declares: "For I know the plans I have for you," declares the Lord, "plans to give you hope and a future."\n\nSometimes, rediscovering yourself begins with releasing who you thought you had to be. Instead of asking, "Why did this happen to me?" ask, "What part of me is God awakening through this experience?"\n\nPurpose after heart failure rarely arrives as a lightning bolt — it usually whispers. It's found in quiet encouragement you offer others, in gratitude that shapes each morning, in the ability to slow down and truly listen.\n\nEvery limitation can carry a hidden opportunity. When strength fades, insight deepens. When stamina wavers, imagination grows. You're becoming someone wiser, humbler, and beautifully real.`,
+        chapter: '📖 Chapter 4 — Rediscovering Self: Finding Purpose Beyond the Pain'
+      },
+      ch5: {
+        keywords: ['relationship', 'relationships', 'marriage', 'spouse', 'partner', 'caregiver', 'family', 'loneliness', 'isolated', 'isolation', 'chapter 5', 'reconnecting', 'connection', 'friends', 'social withdrawal', 'alone', 'withdrew', 'reconnect', 'intimacy'],
+        response: `Many expect heart failure to weaken the body. Fewer realize how it also shakes the structure of every connection around it. Relationships, once effortless, can suddenly feel fragile or confusing. People you thought would stay close may disappear, while others show love in ways you're not ready to receive.\n\nThis confusion is normal. Just as illness interrupts your heart's rhythm, it can throw off the rhythm of intimacy. As Colossians 3:13-14 reminds us: "Bear with each other and forgive one another... Forgive as the Lord forgave you."\n\nIn recovery, isolation may start to feel safe. But silence is a tricky companion. What begins as rest can gradually shift into isolation. Your spirit, created for fellowship, withers in prolonged solitude.\n\nStudies reveal that over 60% of heart failure survivors and their partners report notable changes in relationship satisfaction following the event. Communication — especially "emotionally focused communication" that emphasizes vulnerability over problem-solving — is the foundation of healing relationships.\n\nOpen the window. Answer a call. Breathe through the discomfort of being seen. Connection doesn't require constant conversation — just ongoing willingness to stay reachable.`,
+        chapter: '📖 Chapter 5 — Reconnecting the Heart: Healing Relationships and Rediscovering Connection'
+      },
+      ch6: {
+        keywords: ['exercise', 'movement', 'physical activity', 'walking', 'rehab', 'rehabilitation', 'cardiac rehab', 'chapter 6', 'exercise fear', 'afraid to exercise', 'activity', 'fitness', 'safe exercise', 'moving again', 'physical movement', 'cardiac rehabilitation'],
+        response: `Fear of physical activity is one of the most common and restrictive barriers to recovery after a life-threatening cardiac event. Everyday exertion — climbing stairs, carrying groceries — can trigger intense anxiety.\n\nWhile understandable, avoiding movement can inadvertently slow physical and emotional recovery. Safe exercise, when properly guided, is one of the greatest protectors against future cardiac events.\n\nStructured cardiac rehabilitation is the gold-standard approach. These programs combine physical training, education, and psychological support to rebuild confidence and strength. Data from the American Heart Association shows that structured rehabilitation reduces rehospitalization by 30–50% and significantly improves mental well-being.\n\nCognitive Behavioral Therapy (CBT) helps survivors reinterpret physical sensations like an accelerated heartbeat as signs of healthy exertion instead of danger. Mindfulness training and relaxation breathing also support anxiety reduction.\n\nLike any muscle, the heart grows stronger with consistent conditioning. Controlled activity improves oxygen efficiency, blood vessel flexibility, and resting heart rate — outcomes protective against future cardiac events.\n\nRemember: each safe movement signals renewal. The goal is not merely to move again, but to live again, free from fear and grounded in trust.`,
+        chapter: '📖 Chapter 6 — Principles of Movement for Survivors'
+      },
+      ch7: {
+        keywords: ['medication', 'medicine', 'drugs', 'prescription', 'pills', 'compliance', 'adherence', 'side effects', 'beta blocker', 'diuretic', 'chapter 7', 'taking medication', 'medicine management', 'refill', 'medications', 'pharmaceutical'],
+        response: `Managing medications after heart failure can feel overwhelming. Between multiple prescriptions, dosing schedules, and side effects, it's common to feel confused or even resistant. But medication adherence is one of the most critical factors in preventing recurrence and improving quality of life.\n\nResearch shows that patients who actively engage with their healthcare teams — reviewing prescriptions, asking questions, understanding side effects — demonstrate higher treatment adherence and reduced emotional distress. Education transforms unpredictable symptoms into understandable signals.\n\nThe American Heart Association (2022) emphasizes that well-informed patients experience less anxiety and better outcomes. Here are key strategies:\n\n• Use pill organizers and set phone reminders for dosing times\n• Keep a medication log noting how you feel after each dose\n• Communicate openly with your doctor about side effects\n• Never stop a medication without consulting your physician first\n• Learn the purpose of each medication — understanding breeds commitment\n\nKnowledge cultivates calm. When you understand what each medication does and why it matters, you shift from passive patient to active participant in your recovery.`,
+        chapter: '📖 Chapter 7 — Medication Management and Adherence'
+      },
+      ch8: {
+        keywords: ['cardiac fog', 'brain fog', 'fog', 'memory', 'concentration', 'cognitive', 'thinking', 'cant think', 'cant focus', 'cant remember', 'forgetful', 'forgetfulness', 'chapter 8', 'clarity', 'clarity awakens', 'confusion', 'cant concentrate', 'mental fog', 'fuzzy', 'hazy'],
+        response: `Cardiac fog — often called "brain fog" — is a common and often frustrating experience after a cardiac event. You might feel muddled, have trouble concentrating, or find your memory isn't as sharp as it used to be. This is real, it has a name, and there is a path through it. You are not losing yourself.\n\nResearch by Alosco et al. (2015) found that reduced cerebral blood flow in heart failure patients directly correlates with cognitive decline. The heart and brain are deeply connected — when cardiac output decreases, the brain receives less oxygen-rich blood, affecting memory, attention, and executive function.\n\nThe good news: cognitive function often improves as cardiac health stabilizes. Strategies that help include:\n\n• Cognitive training exercises and mental stimulation\n• Consistent physical activity (which improves cerebral blood flow)\n• Adequate sleep and stress management\n• Medication optimization with your healthcare provider\n• Mindfulness meditation, which improves focus and mental clarity\n\nAs the book reminds us: "You are not merely regaining focus — you are awakening vision. The ability to see not only life, but eternity." Your mind is not failing you; it is healing alongside your heart.`,
+        chapter: '📖 Chapter 8 — Clarity Awakens: Understanding and Overcoming Cardiac Fog'
+      },
+      ch9: {
+        keywords: ['whole', 'wholeness', 'living whole', 'healing complete', 'complete recovery', 'peace', 'acceptance', 'mortality', 'death', 'dying', 'fear of death', 'spiritual', 'chapter 9', 'spiritual crisis', 'meaning of life', 'why am i here', 'existential', 'purpose after survival', 'living whole again'],
+        response: `Wholeness is different from perfection, and healing rarely means a full return to the old rhythm — it means cultivating a new one. Living whole begins when you combine the lessons of your body, mind, and spirit into a single rhythm of grace.\n\nFor many survivors, fear of recurrence looms ever-present. This shadow is cast out when viewed through eternity's lens. When life becomes aligned with heaven's timeline, every day feels both fragile and infinite. Your heartbeat becomes not a countdown but a metronome of purpose.\n\nAs Philippians 1:6 promises: "He who began a good work in you will carry it on to completion until the day of Christ Jesus." God's healing is not a single event — it's a lifelong work in progress.\n\nMany survivors describe facing a spiritual crisis following their physical recovery — a disorienting mix of gratitude, fear, confusion, and an acute awareness of mortality. This is not pathology; it is a natural and transformative stage in healing.\n\nGratitude transforms ordinary living into daily worship. Where fear once ruled, gratitude now guides. Keeping a gratitude rhythm — whether through journaling or whispered prayers — anchors the soul to hope's steady pulse.\n\nWholeness is not the erasure of the storm's memory, but the ability to dance again beneath the sky it cleared.`,
+        chapter: '📖 Chapter 9 — Living Whole Again: Embracing a Heart Made Strong by Grace'
+      },
+      ch10: {
+        keywords: ['light', 'hope', 'living with light', 'beacon', 'testimony', 'chapter 10', 'moving forward', 'future', 'new life', 'new beginning', 'second chance', 'gratitude lifestyle', 'serve others', 'helping others'],
+        response: `When the storm subsides, light takes on a new quality. It's softer, wiser — filtered through divine gratitude and grace. After heart failure, peace is not the absence of struggle; it's the quiet courage to breathe fully again.\n\nAs Psalm 27:1 declares: "The Lord is my light and my salvation — whom shall I fear? The Lord is the stronghold of my life."\n\nLiving with light means walking without fear of darkness. You no longer chase guarantees; you walk in trust. This stage of your journey blends awareness and surrender — you make peace with your limits while embracing new liberty.\n\nYour recovery is not yours alone — it burns bright, blazing as a beacon for others still lost in fear or grief. When you forgive, serve, or encourage, you reflect the Spirit's glow into weary hearts.\n\nAs Matthew 5:16 says: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven."\n\nGratitude is the language of light. It illuminates your mind, guiding you from scarcity to sufficiency. Each morning becomes an altar, every ordinary task an act of praise.\n\nTo live with light is to live aware of grace — steady, patient, radiant. The night taught you endurance; the dawn teaches joy. Go forward gently, shining deliberately — the storm is behind you, but its wisdom glows within you.`,
+        chapter: '📖 Chapter 10 — Living with Light: Embracing Peace, Purpose, and Presence After the Storm'
+      },
+      newlyDiagnosed: {
+        keywords: ['newly diagnosed', 'just diagnosed', 'recently diagnosed', 'new diagnosis', 'just found out', 'newly diagnosed', 'diagnosis', 'what now', 'what do i do', 'where do i start', 'just told', 'starting out'],
+        response: `You've just received news that has turned your world upside down. The fear is real. The uncertainty is overwhelming. This book speaks directly to where you are right now — and gently shows you the path forward.\n\nHeart failure is not just a medical event. It is a life-altering experience that touches every part of who you are. But here is what you need to know right now:\n\n1. You are not alone — approximately 6.2 million Americans are living with heart failure\n2. Fear is natural — it doesn't mean you've lost faith; it means your faith has something real to work with\n3. Recovery is a journey, not a sprint — be patient with yourself\n4. Ask questions — education replaces fear with informed confidence\n5. Lean on your support system — family, friends, medical team, and faith community\n\nAs Isaiah 41:10 reminds you: "Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you."\n\nThe first step is simply to breathe. You survived. And that is enough for today.`,
+        chapter: '❤️ For the Newly Diagnosed — You are not alone on this journey'
+      },
+      caregiver: {
+        keywords: ['caregiver', 'caregiving', 'wife', 'husband', 'partner care', 'taking care of', 'helping my', 'spouse care', 'family member', 'loved one with heart failure', 'caring for', 'caregiver support', 'caregiver stress'],
+        response: `You love someone who has survived heart failure. You want to understand what they're going through — not just physically, but emotionally and spiritually. That love is the most powerful medicine they will ever receive.\n\nBut caregiving has its own challenges. Studies reveal that over 60% of heart failure survivors and their partners report notable changes in relationship satisfaction following the event. The shift from reciprocity to dependency can leave both parties struggling.\n\nHere are ways to support your loved one while caring for yourself:\n\n• Practice emotionally focused communication — share vulnerabilities, not just problems\n• Establish collaborative routines for medication and appointments\n• Encourage gradual role reclamation — let them resume manageable responsibilities\n• Seek caregiver education — understanding the condition reduces fear-based overinvolvement\n• Don't forget your own needs — rest, support groups, and personal time matter\n\nAs Ecclesiastes 4:9-10 reminds us: "Two are better than one... For if either falls, one will lift up the other."\n\nYour presence — even in silence — is a form of grace. You don't need to have all the answers. Simply being there is enough.`,
+        chapter: '❤️ For Caregivers & Family — Your love makes a difference'
+      },
+      resources: {
+        keywords: ['resources', 'help', 'support', 'support group', 'organizations', 'where to get help', 'community', 'online support', 'peer support', 'mended hearts', 'aha', 'american heart', 'heart failure society', 'womenheart', 'cardiosmart', 'heartfailure.net'],
+        response: `Recovery from heart failure is not a solitary journey. These trusted organizations offer support, education, and community for survivors and their families:\n\n🏥 Medical Support:\n• American Heart Association — heart.org/en/health-topics/heart-failure\n• Heart Failure Society of America — hfsa.org\n• CardioSmart (ACC) — cardiosmart.org\n\n🤝 Peer Support:\n• Mended Hearts — mendedhearts.org (Peer-to-peer support for heart disease patients and families)\n• HeartFailure.net — heartfailure.net (Community forums, personal stories, and practical advice)\n\n💜 Women's Health:\n• WomenHeart — womenheart.org (Support and advocacy for women living with heart disease)\n\nThese organizations provide everything from clinical guidance and patient education to community forums where you can connect with others who truly understand what you're going through.`,
+        chapter: '💙 Resources — You are never alone on this journey'
+      },
+      meditation: {
+        keywords: ['meditation', 'guided meditation', 'breathing', 'breath', 'relax', 'relaxation', 'calm', 'mindfulness', 'breathe', 'prayer', 'spiritual practice', 'quiet time', 'stillness', 'meditate'],
+        response: `Throughout the book, Greg offers guided meditations to help you find stillness and peace. Here is a simple breathing practice you can try right now:\n\nClose your eyes and take a slow, deep breath in... hold for a moment... then gently release. Let the quiet settle around you. You have survived a great deal, and now this stillness is your teacher.\n\nBring your attention to the center of your chest. Notice your heartbeat — soft, steady, present. Your heart knows the rhythm of survival, but now it learns to beat in peace.\n\nTake another breath. As you inhale, imagine drawing in light — calm, warm, compassionate. As you exhale, let go of numbness, guilt, and the need to feel "normal."\n\nWhisper softly: "Awaken, my heart, not in fear, but in trust." Feel warmth begin to respond, like tiny embers returning to flame.\n\nAs Psalm 34:18 offers: "The Lord is close to the brokenhearted and saves those who are crushed in spirit."\n\nEach chapter of the book includes its own guided meditation, breath prayer, and reflection questions to anchor your healing in stillness and grace.`,
+        chapter: '🙏 Guided Meditation — From the pages of Hope After Heart Failure'
+      },
+      scripture: {
+        keywords: ['bible', 'scripture', 'verse', 'biblical', 'faith', 'god', 'jesus', 'christian', 'spiritual', 'isaiah', 'psalm', 'corinthians', 'philippians', 'matthew', 'john', 'jeremiah', 'ecclesiastes', 'colossians', 'verse for me', 'encouraging verse', 'bible verse', 'god word'],
+        response: `Scripture weaves through every chapter of Hope After Heart Failure, offering anchors of hope and healing. Here are some of the key verses that speak directly to the heart failure journey:\n\n🕊️ For Fear: "Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you." — Isaiah 41:10\n\n💪 For Strength: "He gives strength to the weary and increases the power of the weak." — Isaiah 40:29\n\n❤️ For Brokenness: "The Lord is close to the brokenhearted and saves those who are crushed in spirit." — Psalm 34:18\n\n🌟 For Purpose: "For I know the plans I have for you," declares the Lord, "plans to give you hope and a future." — Jeremiah 29:11\n\n🕊️ For Peace: "Peace I leave with you; My peace I give you. Not as the world gives. Do not let your hearts be troubled and do not be afraid." — John 14:27\n\n🌅 For Light: "The Lord is my light and my salvation — whom shall I fear?" — Psalm 27:1\n\n💪 For Weakness: "My grace is sufficient for you, for My power is made perfect in weakness." — 2 Corinthians 12:9\n\nEach chapter of the book explores these verses in the context of recovery, showing how faith transforms fear, weakness becomes strength, and suffering gives way to grace.`,
+        chapter: '🙏 Scripture & Faith — Anchors for the journey of healing'
+      },
+      sleep: {
+        keywords: ['sleep', 'insomnia', 'cant sleep', 'trouble sleeping', 'nighttime', 'night anxiety', 'restless', 'restless sleep', 'sleep problems', 'sleeping', 'night time', 'awake at night', 'bad sleep'],
+        response: `Evenings often amplify anxiety after heart failure. Quiet solitude can draw awareness to heartbeat rhythms and trigger fear. This hyper-vigilance frequently leads to insomnia, which aggravates fatigue and emotional fragility.\n\nDeveloping healthy sleep rituals is important:\n\n• Stick to consistent bedtimes and wake times\n• Avoid caffeine, especially in the afternoon and evening\n• Limit screens before bed — the blue light disrupts melatonin production\n• Practice gratitude reflections or prayer before turning in\n• Try journaling to anchor thoughts away from fear and toward peace\n• Keep your room cool, dark, and comfortable\n\nResearch from Harvard Health Publishing (2023) highlights that mindfulness-based stress reduction (MBSR) significantly improves sleep quality and emotional regulation among cardiac patients.\n\nBefore sleep, try this breath prayer: Inhale, saying "God, fill me with peace." Exhale, saying "God, calm my heart." Repeat until rest comes.\n\nAs Matthew 11:28 offers: "Come to Me, all you who labor and are heavy laden, and I will give you rest."`,
+        chapter: '📖 Sleep & Rest — From Chapters 1 and 2 of Hope After Heart Failure'
+      },
+      nutrition: {
+        keywords: ['diet', 'food', 'nutrition', 'eating', 'sodium', 'salt', 'heart healthy diet', 'meal', 'meals', 'what to eat', 'eating plan', 'low sodium', 'heart diet', 'healthy eating'],
+        response: `Nutrition plays a crucial role in heart failure recovery. Diets rich in lean proteins, whole grains, fruits, and vegetables support tissue repair and muscle function. Critically, reducing sodium intake limits fluid buildup, easing the heart's workload.\n\nThe Journal of the American College of Cardiology (Heidenreich et al., 2022) confirms that adherence to a low-sodium, heart-healthy eating plan directly correlates with improved symptoms and energy levels in heart failure populations.\n\nKey nutritional guidelines:\n\n• Limit sodium to less than 1,500–2,000 mg per day\n• Choose lean proteins like fish, poultry, and legumes\n• Eat plenty of fresh fruits and vegetables\n• Whole grains over refined carbohydrates\n• Limit processed foods, which are often high in hidden sodium\n• Stay adequately hydrated, but follow your doctor's fluid intake guidelines\n• Avoid excess alcohol, which can weaken heart muscle\n\nNutrition is not just about restriction — it's about fueling your recovery. Every healthy meal is an act of self-care that honors the body fighting for you.`,
+        chapter: '🥗 Nutrition & Heart-Healthy Eating — From Hope After Heart Failure'
+      },
+      chapter1Free: {
+        keywords: ['free chapter', 'chapter 1 free', 'get chapter 1', 'free sample', 'read chapter 1', 'try the book', 'preview', 'free first chapter', 'sample'],
+        response: `You can get Chapter 1 — "Emerging from Fear: Learning to Breathe Again After the Storm" — absolutely free! This chapter introduces the journey of moving through fear after heart failure, including understanding post-event anxiety, trusting your body again, and translating fear into faith.\n\nVisit HopeAfterHeartFailure.com and click "GET CHAPTER 1 FREE" to receive your complimentary copy.\n\nAs Greg writes in Chapter 1: "Fear doesn't mean you've lost faith; it means your faith now has something real to work with. In spiritual terms, courage doesn't arrive without the context of something to overcome."`,
+        chapter: '📖 Get Your Free Chapter — HopeAfterHeartFailure.com'
+      },
+      dedication: {
+        keywords: ['dedication', 'kristy', 'wife', 'dedicated to', 'who is the book dedicated to'],
+        response: `Hope After Heart Failure is dedicated to Greg's loving wife, Kristy, "who fought for me every step of the way and never gave up, even when all Hope seemed lost."\n\nAnd to every heart that fought to keep beating, and every person who refused to stop loving you through it.`,
+        chapter: '❤️ Dedication — Hope After Heart Failure'
+      },
+      disclaimer: {
+        keywords: ['medical advice', 'medical disclaimer', 'doctor', 'should i', 'diagnosis', 'treatment', 'health advice', 'medical question', 'symptom', 'symptoms', 'chest pain', 'emergency'],
+        response: `Important reminder: This book and chatbot are intended for informational and inspirational purposes only and do not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any medical condition or before making any changes to your health regimen.\n\nIf you are experiencing chest pain, difficulty breathing, or any other emergency symptoms, please call 911 or your local emergency number immediately.\n\nThe resources provided through this chatbot can help you understand and navigate the emotional, spiritual, and practical aspects of recovery — but your medical team should always be your first point of contact for clinical decisions.`,
+        chapter: '⚕️ Medical Disclaimer'
+      },
+      thankyou: {
+        keywords: ['thank', 'thanks', 'thank you', 'appreciate', 'grateful', 'helpful'],
+        response: `You're very welcome. Remember — you are not walking this path alone. Every question you ask, every fear you face, and every step you take forward is part of your healing journey.\n\nAs Greg writes: "Just when you think that your Life has Shattered, A New Life Has Begun."\n\nI'm here whenever you need to talk. 💛`,
+        chapter: null
+      },
+      greeting: {
+        keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'howdy', 'greetings', 'sup', 'whats up'],
+        response: `Hello, friend. I'm here to help you find your way through this journey. Whether you're a survivor, a caregiver, or someone newly diagnosed — you're in the right place.\n\nHow can I help you today?`,
+        chapter: null
+      }
+    };
+    // ===== TOPIC QUICK-REPLY BUTTONS =====
+    const QUICK_TOPICS = [
+      'I\'m newly diagnosed',
+      'I\'m dealing with fear',
+      'Tell me about cardiac fog',
+      'I feel exhausted',
+      'Help with relationships',
+      'Scripture for hope',
+      'Free Chapter 1',
+      'Resources & support'
+    ];
+    // ===== HELPER FUNCTIONS =====
+    function addMessage(text, sender, chapterRef) {
+      const div = document.createElement('div');
+      div.className = `hahf-msg ${sender}`;
+      let html = text.replace(/\n/g, '<br>');
+      if (chapterRef) {
+        html += `<span class="chapter-ref">${chapterRef}</span>`;
+      }
+      div.innerHTML = html;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function addQuickReplies() {
+      const container = document.createElement('div');
+      container.className = 'hahf-quick-replies';
+      const topics = QUICK_TOPICS.sort(() => Math.random() - 0.5).slice(0, 4);
+      topics.forEach(topic => {
+        const btn = document.createElement('button');
+        btn.className = 'hahf-quick-reply';
+        btn.textContent = topic;
+        btn.addEventListener('click', () => {
+          container.remove();
+          handleUserInput(topic);
+        });
+        container.appendChild(btn);
+      });
+      chatMessages.appendChild(container);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'hahf-typing';
+      div.id = 'hahf-typing-indicator';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function hideTyping() {
+      const el = document.getElementById('hahf-typing-indicator');
+      if (el) el.remove();
+    }
+    // ===== SMART MATCHING ENGINE =====
+    function findBestMatch(input) {
+      const lower = input.toLowerCase().trim();
+      let bestMatch = null;
+      let bestScore = 0;
+      for (const [key, entry] of Object.entries(KB)) {
+        let score = 0;
+        for (const kw of entry.keywords) {
+          if (lower.includes(kw.toLowerCase())) {
+            score += kw.length;
+          }
+        }
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = entry;
+        }
+      }
+      if (bestScore < 3) {
+        const words = lower.split(/\s+/);
+        for (const [key, entry] of Object.entries(KB)) {
+          let score = 0;
+          for (const word of words) {
+            if (word.length < 3) continue;
+            for (const kw of entry.keywords) {
+              if (kw.toLowerCase().includes(word)) {
+                score += word.length * 0.5;
+              }
+            }
+          }
+          if (score > bestScore) {
+            bestScore = score;
+            bestMatch = entry;
+          }
+        }
+      }
+      return bestMatch;
+    }
+    // ===== HANDLE USER INPUT =====
+    function handleUserInput(text) {
+      if (!text.trim()) return;
+      addMessage(text, 'user');
+      chatInput.value = '';
+      showTyping();
+      const delay = 600 + Math.random() * 800;
+      setTimeout(() => {
+        hideTyping();
+        const match = findBestMatch(text);
+        if (match) {
+          addMessage(match.response, 'bot', match.chapter);
+          setTimeout(() => addQuickReplies(), 400);
+        } else {
+          addMessage(
+            `That's a really important question. While I may not have a specific answer for that, the book "Hope After Heart Failure" covers many aspects of recovery — from fear and fatigue to relationships, faith, and finding purpose again.\n\nTry asking me about topics like: fear, fatigue, cardiac fog, relationships, scripture, sleep, nutrition, or resources for support. I'm here to help you find what you need. 💛`,
+            'bot'
+          );
+          setTimeout(() => addQuickReplies(), 400);
+        }
+      }, delay);
+    }
+    // ===== EVENT HANDLERS =====
+    chatBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        chatWindow.classList.add('open');
+        chatInput.focus();
+        if (!hasGreeted) {
+          hasGreeted = true;
+          setTimeout(() => {
+            addMessage(KB.greeting.response, 'bot');
+            setTimeout(() => addQuickReplies(), 500);
+          }, 400);
+        }
+      } else {
+        chatWindow.classList.remove('open');
+      }
+    });
+    chatClose.addEventListener('click', () => {
+      isOpen = false;
+      chatWindow.classList.remove('open');
+    });
+    chatSend.addEventListener('click', () => {
+      handleUserInput(chatInput.value);
+    });
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleUserInput(chatInput.value);
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        isOpen = false;
+        chatWindow.classList.remove('open');
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
