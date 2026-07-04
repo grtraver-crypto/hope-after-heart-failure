@@ -350,10 +350,12 @@
       <div class="signup">
         <p class="signup-title"><span class="gold">&#9993;</span> Stay Connected</p>
         <p class="signup-sub">Receive updates, encouragement, and resources for your healing journey.</p>
-        <div class="signup-row">
-          <input type="email" placeholder="Your email address" aria-label="Your email address" />
-          <button type="button" class="btn btn-primary">Join &#8594;</button>
-        </div>
+        <form class="signup-row" name="blog-signup" method="POST" action="/blog/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="blog-signup" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
+          <button type="submit" class="btn btn-primary">Join &#8594;</button>
+        </form>
         <p class="signup-fine">No spam, ever. Unsubscribe anytime.</p>
       </div>
     </div>
