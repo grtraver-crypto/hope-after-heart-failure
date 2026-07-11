@@ -242,7 +242,7 @@
     <h4>Hope After Heart Failure</h4>
     <p>A survivor's guide for recovery after cardiac crisis — written by a two-time heart failure survivor. Because surviving is just the beginning.</p>
     <a class="btn" href="https://hopeafterheartfailure.com/chapter-1">📖 Get Chapter 1 Free</a>
-    <a class="btn hahf-buy" href="#" style="margin-left:.5rem">📚 Buy the Book</a>
+    <a class="btn hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener" style="margin-left:.5rem">📚 Buy the Book</a>
   </div>
   <div class="signup">
     <h4 class="signup-title">✉ Stay Connected</h4>
@@ -312,7 +312,6 @@
   document.body.appendChild(modal);
   function openModal(e){ e.preventDefault(); modal.classList.add('open'); }
   function closeModal(){ modal.classList.remove('open'); }
-  document.querySelectorAll('.hahf-buy').forEach(function(a){ a.addEventListener('click', openModal); });
   modal.querySelector('.hahf-modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });

@@ -118,7 +118,7 @@
       <p class="hero-sub">A Survivor's Guide for Recovery After Cardiac Crisis</p>
       <p class="hero-tagline">Because surviving is just the beginning.</p>
       <a class="btn btn-primary" href="chapter-1.html">&#128214;&nbsp; Get Chapter 1 Free</a>
-      <a class="btn btn-primary hahf-buy" href="#" style="margin-left:.6rem">&#128218;&nbsp; Buy the Book</a>
+      <a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener" style="margin-left:.6rem">&#128218;&nbsp; Buy the Book</a>
     </div>
     <div class="hero-image">
       <img class="hero-cover" src="images/book-cover.png" alt="Hope After Heart Failure book cover by Greg Traver" />
@@ -350,7 +350,7 @@
         <li>A companion for the entire journey — from diagnosis to living whole</li>
       </ul>
 
-      <p style="margin:0 0 2rem"><a class="btn btn-primary hahf-buy" href="#">&#128218;&nbsp; Buy the Book</a></p>
+      <p style="margin:0 0 2rem"><a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener">&#128218;&nbsp; Buy the Book</a></p>
 
       <div class="signup">
         <p class="signup-title"><span class="gold">&#9993;</span> Stay Connected</p>
@@ -1031,7 +1031,6 @@
   document.body.appendChild(modal);
   function openModal(e){ e.preventDefault(); modal.classList.add('open'); }
   function closeModal(){ modal.classList.remove('open'); }
-  document.querySelectorAll('.hahf-buy').forEach(function(a){ a.addEventListener('click', openModal); });
   modal.querySelector('.hahf-modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
