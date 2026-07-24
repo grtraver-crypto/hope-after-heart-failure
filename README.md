@@ -84,7 +84,5 @@ within a minute — no extra steps.
 ---
 
 ## A note on the images
-The three large images (book cover, author photo, community photo) are currently
-shown as styled placeholders, because the original site blocks automated
-downloading. To use the real ones, save them into the `images/` folder and follow
-the short instructions in `images/README.txt`.
+The real book cover, author photo, and community photo are now saved in the
+`images/` folder and referenced in `index.html` — no more placeholders.
