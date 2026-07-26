@@ -1017,14 +1017,16 @@
 </script>
 
 <script>
-/* Free-chapter form -> MailerLite (drives the welcome sequence) + Netlify (backup),
-   then straight to the chapter. Submitting normally would post to Netlify alone,
-   which cannot send email, so the sequence would never fire. */
+/* Free-chapter form -> our own Netlify function (which talks to MailerLite's API)
+   + Netlify Forms as a backup record, then straight to the chapter.
+
+   Posting to MailerLite's *form* endpoint from the browser forced double opt-in,
+   leaving subscribers "Unconfirmed" so the welcome automation never fired. The
+   function uses MailerLite's *API* instead, where double opt-in is off, so
+   subscribers arrive Active. It also keeps the API key off the page. */
 (function () {
   var form = document.getElementById('free-chapter-form');
   if (!form) return;
-
-  var MAILERLITE = 'https://assets.mailerlite.com/jsonp/2533811/forms/194062308215883125/subscribe';
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1036,18 +1038,12 @@
     var btn = form.querySelector('button[type="submit"]');
     if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-    /* MailerLite is cross-origin, so this is a no-cors post: the subscriber is
-       created but the browser cannot read the reply. Confirm signups in
-       MailerLite, never from this page. */
-    var toMailerLite = fetch(MAILERLITE, {
+    /* Same-origin, so we can actually read whether this succeeded - unlike the
+       cross-origin post it replaces. */
+    var toMailerLite = fetch('/.netlify/functions/subscribe', {
       method: 'POST',
-      mode: 'no-cors',
-      body: new URLSearchParams({
-        'fields[name]': name,
-        'fields[email]': email,
-        'ml-submit': '1',
-        'anticsrf': 'true'
-      })
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ 'name': name, 'email': email })
     })['catch'](function () {});
 
     /* Same-origin copy to Netlify Forms. Keeps a record of every lead in case
