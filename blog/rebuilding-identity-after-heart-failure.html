@@ -285,6 +285,7 @@ The inner narrative matters enormously. If the story you tell yourself every day
     '  <h3 id="hahf-modal-title">New Release Coming Soon</h3>' +
     '  <p>The new edition of <em>Hope After Heart Failure</em> is on its way. Sign up now and you\'ll be notified the moment it\'s released.</p>' +
     '  <form class="hahf-notify-form">' +
+    '    <input type="text" name="name" placeholder="Your first name" required aria-label="First name" />' +
     '    <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />' +
     '    <button type="submit" class="hahf-modal-btn">Sign Up Now for Notification</button>' +
     '  </form>' +
@@ -300,9 +301,10 @@ The inner narrative matters enormously. If the story you tell yourself every day
   var form = modal.querySelector('.hahf-notify-form');
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var fname = form.querySelector('input[name="name"]').value.trim();
     var email = form.querySelector('input[name="email"]').value.trim();
     if (!email) return;
-    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'email': email }).toString();
+    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'name': fname, 'email': email }).toString();
     var done = function(){
       form.style.display = 'none';
       modal.querySelector('.hahf-modal-success').style.display = 'block';

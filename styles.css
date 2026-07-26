@@ -314,6 +314,26 @@ a { color: inherit; text-decoration: none; }
 .signup-row input::placeholder { color: var(--on-dark-soft); }
 .signup-fine { color: var(--on-dark-soft); font-size: .8rem; margin: 1rem 0 0; }
 
+/* Hero free-chapter capture. Light-ground sibling of .signup above, which is
+   styled for the navy sections and would read as a heavy slab in the hero. */
+.hero-capture { margin: 0 0 1.4rem; max-width: 34rem; }
+.hero-capture-label { color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 .7rem; }
+.hero-capture-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+.hero-capture-row input {
+  flex: 1 1 9rem; min-width: 0;
+  padding: .75rem 1rem;
+  border: 1px solid rgba(31, 27, 22, .25);
+  background: #fff; color: var(--ink);
+  font-family: var(--body); font-size: 1rem;
+}
+.hero-capture-row input::placeholder { color: var(--ink-soft); opacity: .7; }
+.hero-capture-row button { flex: 0 0 auto; }
+.hero-capture-fine { color: var(--ink-soft); font-size: .85rem; margin: .7rem 0 0; }
+@media (max-width: 640px) {
+  .hero-capture-row { flex-direction: column; }
+  .hero-capture-row button { width: 100%; }
+}
+
 .get-aside { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
 .gift { background: var(--sage); padding: 1.8rem; text-align: center; }
 .gift .eyebrow { color: var(--ink-soft); }

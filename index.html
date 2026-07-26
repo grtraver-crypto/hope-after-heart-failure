@@ -117,8 +117,18 @@
       </h1>
       <p class="hero-sub">A Survivor's Guide for Recovery After Cardiac Crisis</p>
       <p class="hero-tagline">Because surviving is just the beginning.</p>
-      <a class="btn btn-primary" href="chapter-1.html">&#128214;&nbsp; Get Chapter 1 Free</a>
-      <a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener" style="margin-left:.6rem">&#128218;&nbsp; Buy the Book</a>
+      <form class="hero-capture" name="free-chapter" method="POST" action="/chapter-1.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="free-chapter" />
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <p class="hero-capture-label"><span class="gold">&#128214;</span>&nbsp; Read Chapter One free &mdash; tell me where to send it.</p>
+        <div class="hero-capture-row">
+          <input type="text" name="name" placeholder="Your first name" aria-label="Your first name" required />
+          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
+          <button type="submit" class="btn btn-primary">Send It &#8594;</button>
+        </div>
+        <p class="hero-capture-fine">No spam, ever. Unsubscribe anytime.</p>
+      </form>
+      <a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener">&#128218;&nbsp; Buy the Book</a>
     </div>
     <div class="hero-image">
       <img class="hero-cover" src="images/book-cover.png" alt="Hope After Heart Failure book cover by Greg Traver" />
@@ -356,6 +366,7 @@
         <form class="signup-row" name="blog-signup" method="POST" action="/blog/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="blog-signup" />
           <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="text" name="name" placeholder="Your first name" aria-label="Your first name" required />
           <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
           <button type="submit" class="btn btn-primary">Join &#8594;</button>
         </form>
@@ -1006,6 +1017,7 @@
 </script>
 
 <form name="book-launch-notify" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
   <input type="email" name="email" />
   <input name="bot-field" />
 </form>
@@ -1020,6 +1032,7 @@
     '  <h3 id="hahf-modal-title">New Release Coming Soon</h3>' +
     '  <p>The new edition of <em>Hope After Heart Failure</em> is on its way. Sign up now and you\'ll be notified the moment it\'s released.</p>' +
     '  <form class="hahf-notify-form">' +
+    '    <input type="text" name="name" placeholder="Your first name" required aria-label="First name" />' +
     '    <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />' +
     '    <button type="submit" class="hahf-modal-btn">Sign Up Now for Notification</button>' +
     '  </form>' +
@@ -1035,9 +1048,10 @@
   var form = modal.querySelector('.hahf-notify-form');
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var fname = form.querySelector('input[name="name"]').value.trim();
     var email = form.querySelector('input[name="email"]').value.trim();
     if (!email) return;
-    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'email': email }).toString();
+    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'name': fname, 'email': email }).toString();
     var done = function(){
       form.style.display = 'none';
       modal.querySelector('.hahf-modal-success').style.display = 'block';
