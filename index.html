@@ -117,7 +117,7 @@
       </h1>
       <p class="hero-sub">A Survivor's Guide for Recovery After Cardiac Crisis</p>
       <p class="hero-tagline">Because surviving is just the beginning.</p>
-      <form class="hero-capture" name="free-chapter" method="POST" action="/chapter-1.html" data-netlify="true" netlify-honeypot="bot-field">
+      <form id="free-chapter-form" class="hero-capture" name="free-chapter" method="POST" action="/chapter-1.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="free-chapter" />
         <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <p class="hero-capture-label"><span class="gold">&#128214;</span>&nbsp; Read Chapter One free &mdash; tell me where to send it.</p>
@@ -1012,6 +1012,66 @@
         document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done();
       }
     });
+  });
+})();
+</script>
+
+<script>
+/* Free-chapter form -> MailerLite (drives the welcome sequence) + Netlify (backup),
+   then straight to the chapter. Submitting normally would post to Netlify alone,
+   which cannot send email, so the sequence would never fire. */
+(function () {
+  var form = document.getElementById('free-chapter-form');
+  if (!form) return;
+
+  var MAILERLITE = 'https://assets.mailerlite.com/jsonp/2533811/forms/194062308215883125/subscribe';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = form.querySelector('input[name="name"]').value.trim();
+    var email = form.querySelector('input[name="email"]').value.trim();
+    if (!email) return;
+
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    /* MailerLite is cross-origin, so this is a no-cors post: the subscriber is
+       created but the browser cannot read the reply. Confirm signups in
+       MailerLite, never from this page. */
+    var toMailerLite = fetch(MAILERLITE, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new URLSearchParams({
+        'fields[name]': name,
+        'fields[email]': email,
+        'ml-submit': '1',
+        'anticsrf': 'true'
+      })
+    })['catch'](function () {});
+
+    /* Same-origin copy to Netlify Forms. Keeps a record of every lead in case
+       MailerLite rejects one silently. */
+    var toNetlify = fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'free-chapter',
+        'name': name,
+        'email': email
+      })
+    })['catch'](function () {});
+
+    /* Send them to the chapter either way - a slow network must never cost
+       someone the thing they just asked for. */
+    var moved = false;
+    function goToChapter() {
+      if (moved) return;
+      moved = true;
+      window.location.href = '/chapter-1.html';
+    }
+    Promise.all([toMailerLite, toNetlify]).then(goToChapter);
+    setTimeout(goToChapter, 2500);
   });
 })();
 </script>
