@@ -12,20 +12,28 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hope After Heart Failure — A Survivor's Guide for Recovery After Cardiac Crisis</title>
-  <meta name="description" content="A two-time heart failure survivor shares what doctors can't tell you — how to truly live again. Discover hope, healing, and the miracles that await you." />
-<link rel="canonical" href="https://hopeafterheartfailure.com/">
+  <title>Chapter One — your copy | Hope After Heart Failure</title>
+  <meta name="description" content="The complete first chapter of Hope After Heart Failure, for subscribers." />
+
+  <!-- Subscribers' copy of the full chapter. Deliberately kept out of search
+       results and out of sitemap.xml, and nothing on the site links to it. The
+       public teaser at /chapter-1.html is the page that ranks; this is what people
+       receive in exchange for their email address. Do not add it to the nav or the
+       sitemap, and do not remove the robots tag below. -->
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+
+<link rel="canonical" href="https://hopeafterheartfailure.com/chapter-one-full.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hope After Heart Failure — A Survivor's Guide for Recovery After Cardiac Crisis">
-<meta property="og:description" content="A two-time heart failure survivor shares what doctors can't tell you — how to truly live again. Discover hope, healing, and the miracles that await you.">
-<meta property="og:url" content="https://hopeafterheartfailure.com/">
+<meta property="og:title" content="Chapter One — your copy | Hope After Heart Failure">
+<meta property="og:description" content="The complete first chapter of Hope After Heart Failure, for subscribers.">
+<meta property="og:url" content="https://hopeafterheartfailure.com/chapter-one-full.html">
 <meta property="og:image" content="https://hopeafterheartfailure.com/images/social-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Hope After Heart Failure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hope After Heart Failure — A Survivor's Guide for Recovery After Cardiac Crisis">
-<meta name="twitter:description" content="A two-time heart failure survivor shares what doctors can't tell you — how to truly live again. Discover hope, healing, and the miracles that await you.">
+<meta name="twitter:title" content="Chapter 1: Emerging from Fear — Hope After Heart Failure">
+<meta name="twitter:description" content="Read Chapter 1 of Hope After Heart Failure — Emerging from Fear: Learning to Breathe Again After the Storm.">
 <meta name="twitter:image" content="https://hopeafterheartfailure.com/images/social-card.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,398 +41,342 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- ============ SCHEMA.ORG STRUCTURED DATA ============ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://hopeafterheartfailure.com/#website",
-        "url": "https://hopeafterheartfailure.com/",
-        "name": "Hope After Heart Failure",
-        "description": "A two-time heart failure survivor shares what doctors can't tell you — how to truly live again. Discover hope, healing, and the miracles that await you.",
-        "publisher": { "@id": "https://hopeafterheartfailure.com/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://hopeafterheartfailure.com/#organization",
-        "name": "Phoenix Rising Media LLC",
-        "url": "https://hopeafterheartfailure.com/"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://hopeafterheartfailure.com/#author",
-        "name": "Greg Traver",
-        "jobTitle": "Author",
-        "description": "Two-time heart failure survivor and author of Hope After Heart Failure.",
-        "worksFor": { "@id": "https://hopeafterheartfailure.com/#organization" }
-      },
-      {
+  <style>
+    /* ===== Chapter reading page ===== */
+    .ch-hero {
+      background: var(--navy); color: var(--on-dark);
+      padding: 4.5rem 2rem 4rem; text-align: center;
+    }
+    .ch-hero .eyebrow { margin-bottom: 1.2rem; }
+    .ch-hero h1 {
+      color: #fff; font-size: clamp(2.4rem, 5vw, 3.8rem);
+      margin: 0 auto .8rem; max-width: 900px;
+    }
+    .ch-hero h1 em { color: var(--gold-light); font-weight: 400; }
+    .ch-hero .ch-sub {
+      font-style: italic; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      color: var(--on-dark-soft); margin: 0 auto; max-width: 640px;
+    }
+    .ch-heart { color: var(--gold); font-size: 1.4rem; margin-bottom: 1.6rem; }
+
+    .reader { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .reader > p { margin: 0 0 1.5rem; font-size: 1.18rem; line-height: 1.75; }
+    .reader h2 {
+      font-size: 1.7rem; margin: 3rem 0 1.2rem; color: var(--navy);
+    }
+    .reader h2:first-child { margin-top: 0; }
+
+    .drop::first-letter {
+      font-family: var(--display); float: left; font-size: 4.2rem;
+      line-height: .82; padding: .35rem .7rem 0 0; color: var(--gold);
+    }
+
+    .scripture {
+      margin: 2.5rem 0; padding: 1.8rem 2rem; border-radius: 3px;
+      background: #fff; border: 1px solid var(--cream-2);
+      box-shadow: 0 4px 16px rgba(0,0,0,.04);
+      text-align: center; font-family: var(--display); font-style: italic;
+      font-size: 1.4rem; line-height: 1.5; color: var(--gold);
+    }
+    .scripture cite {
+      display: block; margin-top: 1rem; font-family: var(--body); font-style: normal;
+      font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+    }
+
+    .ch-divider { text-align: center; margin: 3.5rem 0; color: var(--gold); font-size: 1.2rem; }
+
+    /* Callout blocks (Reflection / Action / Meditation / Workbook) */
+    .callout {
+      margin: 3rem 0; padding: 2rem 2.2rem; border-radius: 3px;
+    }
+    .callout .eyebrow { margin-bottom: 1rem; }
+    .callout h3 {
+      font-size: 1.5rem; margin: 0 0 1.2rem; color: var(--navy);
+    }
+    .callout ol, .callout ul { margin: 0; padding-left: 1.3rem; }
+    .callout li { margin-bottom: 1rem; line-height: 1.6; }
+    .callout li:last-child { margin-bottom: 0; }
+
+    .callout.reflection { background: #fff; border: 1px solid var(--cream-2); }
+    .callout.action { background: #fff; border: 1px solid var(--cream-2); }
+    .callout.action h3 { color: var(--navy); }
+
+    .meditation {
+      background: var(--navy); color: var(--on-dark);
+      margin: 3.5rem 0; padding: 2.6rem 2.2rem; border-radius: 3px;
+    }
+    .meditation h3 { color: #fff; font-size: 1.6rem; margin: 0 0 1.4rem; }
+    .meditation p { color: var(--on-dark-soft); line-height: 1.8; margin: 0 0 1.2rem; font-size: 1.08rem; }
+    .meditation .scripture { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); box-shadow: none; color: var(--gold-light); }
+    .meditation .scripture cite { color: var(--on-dark-soft); }
+    .meditation .whisper { font-family: var(--display); font-style: italic; color: var(--gold-light); }
+
+    .workbook { background: #fff; border: 1px solid var(--cream-2); }
+    .workbook .prompt { margin: 0 0 .6rem; font-size: 1.1rem; color: var(--ink); line-height: 1.6; }
+    .workbook .prompt strong { color: var(--gold); font-family: var(--display); margin-right: .4rem; }
+    .writelines {
+      border: none;
+      height: 9.6rem; margin: 0 0 1.8rem;
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(2.4rem - 1px), var(--cream-2) calc(2.4rem - 1px), var(--cream-2) 2.4rem);
+    }
+    .writelines:last-child { margin-bottom: 0; }
+
+    /* Back / end CTA */
+    .ch-topbar {
+      max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .back-link { color: var(--ink-soft); font-size: .95rem; letter-spacing: .04em; }
+    .back-link:hover { color: var(--gold); }
+
+    .ch-end {
+      background: var(--cream-2); text-align: center; padding: 4rem 2rem;
+      margin-top: 3rem;
+    }
+    .ch-end h3 { font-size: 1.8rem; margin: 0 0 .8rem; color: var(--navy); }
+    .ch-end p { max-width: 520px; margin: 0 auto 1.8rem; color: var(--ink-soft); }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://hopeafterheartfailure.com/chapter-1.html#webpage",
+      "url": "https://hopeafterheartfailure.com/chapter-1.html",
+      "name": "Chapter 1: Emerging from Fear — Hope After Heart Failure",
+      "description": "Read Chapter 1 of Hope After Heart Failure — Emerging from Fear: Learning to Breathe Again After the Storm.",
+      "about": {
         "@type": "Book",
         "@id": "https://hopeafterheartfailure.com/#book",
         "name": "Hope After Heart Failure",
-        "alternateName": "A Survivor's Guide for Recovery After Cardiac Crisis",
-        "author": { "@id": "https://hopeafterheartfailure.com/#author" },
-        "publisher": { "@id": "https://hopeafterheartfailure.com/#organization" },
-        "image": "https://hopeafterheartfailure.com/images/book-cover.png",
-        "url": "https://hopeafterheartfailure.com/",
-        "description": "A two-time heart failure survivor shares what doctors can't tell you — how to truly live again. Discover hope, healing, and the miracles that await you.",
-        "genre": "Health & Recovery / Inspirational Memoir",
-        "inLanguage": "en"
+        "author": {
+          "@type": "Person",
+          "@id": "https://hopeafterheartfailure.com/#author",
+          "name": "Greg R. Traver",
+          "description": "Two-time heart failure survivor and author of Hope After Heart Failure.",
+          "url": "https://hopeafterheartfailure.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://hopeafterheartfailure.com/#organization",
+          "name": "Phoenix Rising Media LLC",
+          "url": "https://hopeafterheartfailure.com/"
+        },
+        "image": "https://hopeafterheartfailure.com/images/book-cover.png"
       },
-      {
-        "@type": "WebPage",
-        "@id": "https://hopeafterheartfailure.com/#webpage",
-        "url": "https://hopeafterheartfailure.com/",
-        "name": "Hope After Heart Failure — A Survivor's Guide for Recovery After Cardiac Crisis",
-        "isPartOf": { "@id": "https://hopeafterheartfailure.com/#website" },
-        "about": { "@id": "https://hopeafterheartfailure.com/#book" },
-        "inLanguage": "en"
-      }
-    ]
-  }
-  </script>
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hopeafterheartfailure.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Free Chapter One",
+          "item": "https://hopeafterheartfailure.com/chapter-1.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-  <!-- ============ NAV ============ -->
-  <header class="nav">
-    <a class="brand" href="#top">
+  <!-- ============ TOP BAR ============ -->
+  <div class="ch-topbar">
+    <a class="brand" href="index.html">
       <span class="brand-heart">&#10084;</span>
       <span class="brand-name">Hope After Heart Failure</span>
     </a>
-    <nav class="nav-links">
-      <a href="about.html">About the Book</a>
-      <a href="blog/">Blog</a>
-      <a href="blog/anxiety-after-heart-failure.html">Anxiety Guide</a>
-      <a href="blog/caring-for-someone-with-heart-failure.html">Caregiver Guide</a>
-      <a href="blog/heart-failure-faq.html">FAQ</a>
-      <a href="#journey">The Journey</a>
-      <a href="#contents">Table of Contents</a>
-      <a href="#survivors">For Survivors</a>
-      <a href="#community">Community</a>
-      <a class="nav-cta" href="chapter-1.html">Free Chapter One</a>
-    </nav>
-  </header>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="top">
-    <div class="hero-text">
-      <h1 class="hero-title">
-        <span class="line-dark">Hope After</span>
-        <span class="line-gold">Heart Failure</span>
-      </h1>
-      <p class="hero-sub">A Survivor's Guide for Recovery After Cardiac Crisis</p>
-      <p class="hero-tagline">Because surviving is just the beginning.</p>
-      <form id="free-chapter-form" class="hero-capture" name="free-chapter" method="POST" action="/chapter-one-full.html" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="free-chapter" />
-        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
-        <p class="hero-capture-label"><span class="gold">&#128214;</span>&nbsp; Read Chapter One free &mdash; tell me where to send it.</p>
-        <div class="hero-capture-row">
-          <input type="text" name="name" placeholder="Your first name" aria-label="Your first name" required />
-          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
-          <button type="submit" class="btn btn-primary">Send It &#8594;</button>
-        </div>
-        <p class="hero-capture-fine">No spam, ever. Unsubscribe anytime.</p>
-      </form>
-      <a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener">&#128218;&nbsp; Buy the Book</a>
-    </div>
-    <div class="hero-image">
-      <img class="hero-cover" src="images/book-cover.png" alt="Hope After Heart Failure book cover by Greg Traver" />
-    </div>
-  </section>
-
-  <div class="hero-quote">
-    <p>&ldquo;Just when you think that your Life has Shattered,<br />A New Life Has Begun.&rdquo;</p>
+    <a class="back-link" href="index.html">&#8592;&nbsp; Back to Home</a>
   </div>
 
-  <!-- ============ THIS BOOK IS FOR YOU ============ -->
-  <section class="dark for-you" id="about">
-    <div class="section-divider"><span>&#10084;</span></div>
-    <p class="eyebrow center">This Book Is For You</p>
-    <h2 class="center">You Survived Something <em>Extraordinary</em></h2>
-    <p class="lead center">
-      Heart failure is not just a medical event. It is a life-altering experience that touches
-      every part of who you are. This book was written for everyone who has lived through it —
-      and everyone who loves them.
-    </p>
+  <!-- ============ CHAPTER HERO ============ -->
+  <section class="ch-hero">
+    <div class="ch-heart">&#10084;</div>
+    <p class="eyebrow center">Chapter One</p>
+    <h1>Emerging from <em>Fear</em></h1>
+    <p class="ch-sub">Learning to Breathe Again After the Storm</p>
+  </section>
 
-    <div class="card-grid" id="survivors">
-      <article class="card">
-        <div class="card-icon">&#10084;</div>
-        <h3>The Newly Diagnosed</h3>
-        <p>You've just received news that has turned your world upside down. The fear is real. The
-          uncertainty is overwhelming. This book speaks directly to where you are right now — and
-          gently shows you the path forward.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon">&#128737;</div>
-        <h3>The Long-Term Survivor</h3>
-        <p>Years have passed, but the shadow of heart failure still visits. You've learned to live
-          with it, but you wonder if you could live better. This book helps you move from managing
-          illness to embracing life.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon">&#128106;</div>
-        <h3>Caregivers &amp; Family</h3>
-        <p>You love someone who has survived heart failure. You want to understand what they're
-          going through — not just physically, but emotionally and spiritually. This book opens
-          that door.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon">&#129504;</div>
-        <h3>Those Battling 'Cardiac Fog'</h3>
-        <p>The memory lapses, the difficulty concentrating, the feeling that your mind isn't quite
-          your own — this is real, it has a name, and there is a path through it. You are not losing
-          yourself.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon">&#127807;</div>
-        <h3>Seekers of Meaning</h3>
-        <p>Surviving a near-death experience changes you. You're asking bigger questions now — about
-          purpose, about faith, about what this second chance means. This book walks that sacred
-          ground with you.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon">&#10024;</div>
-        <h3>Those Ready to Live Again</h3>
-        <p>You've done the hard work of surviving. Now you're ready to do something even harder — to
-          truly live. To laugh without guilt. To plan without fear. To believe in miracles again.</p>
-      </article>
+  <!-- ============ READER ============ -->
+  <article class="reader">
+
+    <!-- Only people who gave their email address reach this page. -->
+    <div class="callout reflection">
+      <p class="eyebrow">A note from Greg</p>
+      <p>Thank you for trusting me with your email address. This is the complete
+      first chapter &mdash; the clinical guide, the guided meditation, and the
+      workbook included. It&rsquo;s yours to keep, and you can come back to this page
+      any time.</p>
+      <p>If anything here raises a question, write to me at
+      <a href="mailto:info@hopeafterheartfailure.com">info@hopeafterheartfailure.com</a>.
+      That inbox comes to me.</p>
     </div>
 
-    <blockquote class="pull-quote center">
-      &ldquo;You are not merely regaining focus — you are awakening vision. The ability to see not
-      only life, but eternity, more clearly than before.&rdquo;
-      <cite>— From Chapter 8: Clarity Awakens</cite>
+    <p class="drop">The first breath after heart failure feels both miraculous and terrifying. You awaken in a world that looks the same but feels utterly new. Machines quiet. Lights dim. And in that silence, fear moves in quietly, insistently, whispering questions you can't easily answer: What if it happens again? What if I close my eyes and don't wake up? Even in gratitude, anxiety can shadow hope. Yet, this fear is not your ending; it's the first tremor of rebirth.</p>
+
+    <h2>When Fear Feels Like a Second Heartbeat</h2>
+    <p>Fear after survival is natural. Your mind remembers what your body endured. Every unusual flutter, every skipped beat, triggers a rush of questions. The body and soul both crave safety&mdash;but they heal at different speeds. While doctors tend to the physical heart, fear often lingers quietly in the emotional one.</p>
+    <p>No one warns you that living again can feel as frightening as dying. But here is truth: fear doesn't mean you've lost faith; it means faith now has something real to work with. In spiritual terms, courage doesn't arrive without something to overcome. God doesn't shame you for fear&mdash;He meets you there.</p>
+
+    <blockquote class="scripture">
+      &ldquo;Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you.&rdquo;
+      <cite>Isaiah 41:10</cite>
     </blockquote>
-  </section>
 
-  <!-- ============ STATS BAR ============ -->
-  <section class="dark stats">
-    <div class="stat">
-      <span class="stat-num">6.7M</span>
-      <strong>Americans living with heart failure</strong>
-      <small>Source: American Heart Association</small>
-    </div>
-    <div class="stat">
-      <span class="stat-num">2&times;</span>
-      <strong>The author survived heart failure — twice</strong>
-      <small>A voice of lived experience</small>
-    </div>
-    <div class="stat">
-      <span class="stat-num">10</span>
-      <strong>Chapters of compassionate guidance</strong>
-      <small>Body, mind, spirit &amp; community</small>
-    </div>
-    <div class="stat">
-      <span class="stat-num">&#8734;</span>
-      <strong>Miracles still waiting to be discovered</strong>
-      <small>The book's central promise</small>
-    </div>
-  </section>
+    <p>Faith does not erase fear; it transforms it. You can tremble and still trust. The presence of God doesn't prevent storms&mdash;it anchors you through them. He does not remove fear by command but by companionship.</p>
 
-  <!-- ============ QUOTE: LIVING WHOLE AGAIN ============ -->
-  <section class="dark quote-section" id="journey">
-    <div class="quote-heart">&#10084;</div>
-    <blockquote class="big-quote">
-      &ldquo;You are living proof that God restores not only hearts but harmony. As you live whole
-      again, you reflect heaven's rhythm on earth — a steady, peaceful heartbeat of gratitude that
-      says to the world, <span class="gold-italic">I am still here. I am still His. And that is
-      enough.</span>&rdquo;
+    <h2>The Noise That Never Stops</h2>
+    <p>Once home from the hospital, silence becomes louder than any alarm. The monitors are gone, and their absence becomes its own unease. You find yourself listening to your pulse, measuring breaths, unable to relax fully into peace. This vigilance, though exhausting, is your heart's way of confirming that life continues. The same awareness that sparks fear can be retrained to awaken gratitude.</p>
+    <p>When anxiety spikes, pause. Breathe deeply&mdash;in through your nose, out through your lips&mdash;and whisper, &lsquo;You are here, God. And so am I.&rsquo; In that small rhythm, the noise quiets. Fear loses oxygen where presence grows.</p>
+
+    <blockquote class="scripture">
+      &ldquo;I sought the Lord, and He answered me; He delivered me from all my fears.&rdquo;
+      <cite>Psalm 34:4</cite>
     </blockquote>
-    <div class="rule"></div>
-    <cite class="quote-cite">— From Chapter 9: Living Whole Again</cite>
-  </section>
 
-  <!-- ============ AUTHOR STORY ============ -->
-  <section class="dark author">
-    <div class="author-card">
-      <div class="author-photo"><img src="images/author.jpg" alt="Greg Traver, author of Hope After Heart Failure" /></div>
-      <p class="eyebrow">About the Author</p>
-      <h3 class="author-name">Greg Traver</h3>
-      <p class="author-role">Two-Time Heart Failure Survivor</p>
-      <p class="author-pub"><span class="gold">&#10084;</span> Phoenix Rising Media LLC</p>
-    </div>
-    <div class="author-story">
-      <p class="eyebrow">— The Author's Story</p>
-      <h2>Written From the Inside <em>of the Experience</em></h2>
-      <p>Greg Traver spent decades chasing success, climbing the ladder, and running on an endless
-        fuel of coffee, smoking and stress. Until his own body called a halt. What began as long
-        workdays and an insane work schedule ended in a fight for his life. After three catastrophic
-        "widow maker" heart attacks and two battles with heart failure, against all odds, Greg
-        survived — but the real journey began the day he woke up in the ICU and realized that life
-        would never be the same.</p>
-      <p>In his new book, <em>Hope After Heart Failure</em>, Traver opens the door to the world
-        beyond the Emergency Department — to the physical, emotional, and spiritual struggle that
-        follows when the machines go quiet and the doctors step away. He writes with the authority
-        of someone who has lived what medicine can't explain and repeatedly defied the odds.
-        "Doctors can do great things," he says, "but they can't tell you how to live with what
-        comes after."</p>
-      <p>This is the book Greg wished he had when his own journey began — a guide for anyone learning
-        how to live again after their heart and life have changed forever. Honest, compassionate,
-        and deeply human, <em>Hope After Heart Failure</em> provides readers with a framework on
-        which to accelerate their recovery.</p>
+    <p>The psalmist did not say God prevented fear, but that He delivered him from it. Deliverance implies movement from panic toward peace, from chaos into calm. That journey unfolds through patience, prayer, and presence, often one breath at a time.</p>
 
-      <div class="tags">
-        <span>Heart Failure Recovery</span>
-        <span>Cardiac Rehabilitation</span>
-        <span>Emotional Healing After Cardiac Crisis</span>
-        <span>Cardiac Fog</span>
-        <span>Faith-Based Healing</span>
-        <span>Caregiver Support</span>
-      </div>
+    <h2>Trusting a Body That Once Betrayed You</h2>
+    <p>Perhaps the hardest part of recovery is learning to trust your own flesh again. The heart that once faltered now beats on, but confidence takes longer to return. Every cough, twinge, or strain can stir panic. You ask, Can I climb those stairs? Should I walk farther? There's vulnerability in every motion&mdash;but also deep grace.</p>
+    <p>Your body, fragile though it feels, is not your enemy. It fought for you. It carried you through trauma, cooperated with medicine, and now labors daily to restore balance. Every scar is proof of God's sustaining mercy. Recovery is not about rushing back to strength but learning to live in rhythm with your body again&mdash;slow, steady, surrendered.</p>
 
-      <blockquote class="author-quote">
-        &ldquo;I didn't write this book because I have all the answers. I wrote it because I've lived
-        the questions — and I've seen what's possible on the other side of them.&rdquo;
-        <cite>— Greg Traver</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ============ COMMUNITY RESOURCES ============ -->
-  <section class="community" id="community">
-    <div class="community-image">
-      <div class="community-photo">
-        <img src="images/community.jpg" alt="Two women sitting together on a garden bench" />
-        <span class="badge">You Are Not Alone</span>
-      </div>
-    </div>
-    <div class="community-text">
-      <p class="eyebrow">— Community Resources</p>
-      <h2>Healing Thrives <em>Where Connection Flourishes</em></h2>
-      <p class="lead">Recovery from heart failure is not a solitary journey. These trusted
-        organizations offer support, education, and community for survivors and their families.</p>
-
-      <a class="resource" href="https://www.heart.org" target="_blank" rel="noopener">
-        <span class="res-cat">Medical Support</span>
-        <strong>American Heart Association</strong>
-        <span class="res-desc">Heart failure resources, support groups, and patient education</span>
-        <span class="res-link">&#8599;</span>
-      </a>
-      <a class="resource" href="https://mendedhearts.org" target="_blank" rel="noopener">
-        <span class="res-cat">Peer Support</span>
-        <strong>Mended Hearts</strong>
-        <span class="res-desc">Peer-to-peer support for heart disease patients and their families</span>
-        <span class="res-link">&#8599;</span>
-      </a>
-      <a class="resource" href="https://hfsa.org" target="_blank" rel="noopener">
-        <span class="res-cat">Clinical Resources</span>
-        <strong>Heart Failure Society of America</strong>
-        <span class="res-desc">Patient resources, clinical guidance, and community connections</span>
-        <span class="res-link">&#8599;</span>
-      </a>
-      <a class="resource" href="https://www.cardiosmart.org" target="_blank" rel="noopener">
-        <span class="res-cat">Education</span>
-        <strong>CardioSmart (ACC)</strong>
-        <span class="res-desc">Patient education from the American College of Cardiology</span>
-        <span class="res-link">&#8599;</span>
-      </a>
-      <a class="resource" href="https://www.womenheart.org" target="_blank" rel="noopener">
-        <span class="res-cat">Women's Health</span>
-        <strong>WomenHeart</strong>
-        <span class="res-desc">Support and advocacy for women living with heart disease</span>
-        <span class="res-link">&#8599;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ============ QUOTE: NO LIMITS TO MIRACLES ============ -->
-  <section class="amber-quote">
-    <div class="amber-heart">&#10084;</div>
-    <blockquote>
-      &ldquo;Most of all, this book demonstrates that there are no limits to miracles — and that
-      there is <em>Hope After Heart Failure.</em>&rdquo;
+    <blockquote class="scripture">
+      &ldquo;Peace I leave with you; My peace I give you. Not as the world gives. Do not let your hearts be troubled and do not be afraid.&rdquo;
+      <cite>John 14:27</cite>
     </blockquote>
-    <div class="rule dark-rule"></div>
-  </section>
 
-  <!-- ============ GET THE BOOK ============ -->
-  <section class="get" id="get">
-    <div class="get-text">
-      <p class="eyebrow">— Get the Book</p>
-      <h2>Begin Your Journey <em>Back to Living</em></h2>
-      <p class="lead">Available now on Books.by. Order your copy and take the first step toward
-        understanding not just how to survive heart failure — but how to truly live again.</p>
+    <p>This divine peace is not the absence of symptoms&mdash;it's the presence of assurance. You are learning to trust the miracle beating inside you not because it's infallible, but because it's now a place where grace resides.</p>
 
-      <ul class="checklist" id="contents">
-        <li>Written by a two-time heart failure survivor — not a clinician</li>
-        <li>10 chapters covering body, mind, spirit, and community</li>
-        <li>Guided meditations and reflective workbook exercises</li>
-        <li>Practical strategies for cognitive fog and emotional recovery</li>
-        <li>Faith-based wisdom woven with evidence-based insights</li>
-        <li>A companion for the entire journey — from diagnosis to living whole</li>
+    <h2>Translating Fear into Faith</h2>
+    <p>Fear is energy. Left unchecked, it consumes. Redirected, it fuels prayer and awareness. Use fear as signal, not sentence&mdash;let it remind you to breathe, to pause, to praise. In moments when anxiety surges, shift your focus from danger to dialogue: &lsquo;Lord, what are You showing me right now? Where are You in this?&rsquo;</p>
+    <p>Faith doesn't silence every fear, but it changes its volume. With time, what once roared becomes background noise beneath stronger melodies of gratitude and courage.</p>
+
+    <h2>The Ministry of Each Breath</h2>
+    <p>Once you have faced mortality, every inhale becomes a confession of gratitude. You begin to realize: your breath is prayer. Each one declares, I am still here. And that truth&mdash;humble, defiant, holy&mdash;can overpower any fear's hold on you.</p>
+    <p>You don't have to do something grand to honor survival. Simply noticing your existence is sacred practice. Look for God's fingerprints in ordinary life: sunlight warming your face, the laughter of someone you love, the sound of your own heartbeat at rest. These are not small things&mdash;they are resurrection made visible.</p>
+
+    <!-- Reflection -->
+    <div class="callout reflection">
+      <p class="eyebrow">For Reflection</p>
+      <h3>Sitting With These Questions</h3>
+      <ol>
+        <li>What situations, sounds, or sensations trigger your fear most often&mdash;and what scriptural truth can you speak into that moment?</li>
+        <li>How has fear shown you what you cherish most about life?</li>
+        <li>Where have you already noticed glimpses of courage or peace returning?</li>
+      </ol>
+    </div>
+
+    <!-- Action -->
+    <div class="callout action">
+      <p class="eyebrow">A Gentle Practice</p>
+      <h3>Action Steps</h3>
+      <ul>
+        <li>Begin and end each day by placing your hand over your heart, whispering: &lsquo;Thank You, Lord, for another heartbeat.&rsquo;</li>
+        <li>Write one sentence each night beginning with: &lsquo;Today, I felt brave when&hellip;&rsquo; Even small acts count.</li>
+        <li>When fear rises, recite John 14:27 slowly. Let peace replace panic with every line.</li>
+        <li>Share a conversation with someone else recovering, confessing not only your fears but also your faith in progress.</li>
       </ul>
-
-      <p style="margin:0 0 2rem"><a class="btn btn-primary hahf-buy" href="https://books.by/phoenix-rising-media" target="_blank" rel="noopener">&#128218;&nbsp; Buy the Book</a></p>
-
-      <div class="signup">
-        <p class="signup-title"><span class="gold">&#9993;</span> Stay Connected</p>
-        <p class="signup-sub">Receive updates, encouragement, and resources for your healing journey.</p>
-        <form class="signup-row" name="blog-signup" method="POST" action="/blog/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="blog-signup" />
-          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
-          <input type="text" name="name" placeholder="Your first name" aria-label="Your first name" required />
-          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
-          <button type="submit" class="btn btn-primary">Join &#8594;</button>
-        </form>
-        <p class="signup-fine">No spam, ever. Unsubscribe anytime.</p>
-      </div>
     </div>
-    <div class="get-aside">
-      <img class="hero-cover small" src="images/book-cover.png" alt="Hope After Heart Failure book cover by Greg Traver" />
-      <div class="gift">
-        <p class="eyebrow">Heart Failure Awareness Week</p>
-        <h4>Share the Gift of Hope</h4>
-        <p>Know someone navigating heart failure? This book makes a meaningful, life-changing gift
-          for survivors and their loved ones.</p>
-      </div>
+
+    <p>Emerging from fear is not about erasing anxiety, it's about transforming it into awareness of grace. Through fear, you learn reverence; through weakness, dependence; through trembling, faith. Courage doesn't look like running; it looks like resting in God's arms while storms pass overhead. You survived the heart's silence&mdash;now you are learning to hear its new song. And that song echoes with this truth: perfect love still drives out fear.</p>
+
+    <div class="ch-divider">&#10084;</div>
+
+    <!-- Clinical companion -->
+    <h2>Learning to Live Without Fear Again</h2>
+    <p style="font-style:italic; color:var(--ink-soft); margin-top:-0.6rem;">Understanding and Managing Post-Heart Failure Anxiety</p>
+
+    <p><strong>Understanding the Nature of Post-Event Fear.</strong> Following a major cardiac event, the brain and body remain on alert. Sensations such as chest tightness, fatigue, or skipped beats can trigger memories of the initial trauma, convincing survivors that danger is near. This response, both physiological and psychological, may cause chronic stress, restlessness, and avoidance of activity. Over time, the constant vigilance leads to diminished quality of life and slowed rehabilitation. Research by the American Psychological Association (2020) indicates that approximately 20 percent of cardiac patients develop measurable post-event anxiety or post-traumatic stress symptoms, which in turn increase cardiovascular strain and delay healing. Early recognition and care are essential for long-term stability.</p>
+
+    <p><strong>Restoring Confidence Through Cardiac Rehabilitation.</strong> Structured cardiac rehabilitation remains the strongest bridge between fear and renewed trust. These supervised programs rebuild stamina through gradual, safe exercise, while medical oversight helps participants distinguish between normal exertion and genuine warning signs. Evidence from the American Heart Association (2022) and Mayo Clinic (2023) shows that patients who complete rehabilitation experience a 25&ndash;30 percent lower recurrence rate of cardiac events and report greater emotional well-being. Rehabilitation retrains the body and mind together, transforming fear into familiarity and anxious caution into competence.</p>
+
+    <p><strong>Addressing Psychological and Emotional Recovery.</strong> Emotional healing is as critical as physical therapy. Intrusive memories and hyper-focus on bodily sensations often signal residual trauma. Counseling&mdash;especially Cognitive Behavioral Therapy (CBT)&mdash;is proven effective in managing fear of recurrence by reframing catastrophic thoughts with factual understanding. Complementary practices such as mindfulness meditation, diaphragmatic breathing, and progressive muscle relaxation reduce overactivation of the sympathetic nervous system, improving heart rate variability and calm focus (Harvard Health Publishing, 2023). Consistent practice teaches survivors to view sensations as information rather than threats, rebuilding trust in their bodies.</p>
+
+    <p><strong>Improving Sleep and Reducing Nighttime Anxiety.</strong> Evenings often amplify anxiety. Quiet and solitude can bring awareness of heartbeat rhythms that trigger fear. This hyper-vigilance frequently leads to insomnia, aggravating fatigue and emotional fragility. Developing healthy sleep rituals&mdash;consistent bedtimes, avoiding caffeine, limiting screens, and practicing gratitude reflection before rest&mdash;helps restore stability. Journaling or prayer before sleep can anchor thoughts away from fear toward peace.</p>
+
+    <p><strong>Reclaiming Control Through Knowledge.</strong> Anxiety often thrives in uncertainty. Learning about heart function, medications, and physical limits replaces fear with informed confidence. Education transforms unpredictable symptoms into understandable signals. The American Heart Association (2022) emphasizes that well-informed patients demonstrate higher treatment adherence and reduced emotional distress. Engaging actively with healthcare teams&mdash;reviewing prescriptions, asking questions, understanding side effects&mdash;empowers survivors to participate in their recovery. Knowledge cultivates calm.</p>
+
+    <p><strong>Reintegration Into Daily Life.</strong> Recovery is gradual, and re-entering normal routines may feel intimidating. Yet gentle, progressive activity rebuilds the nervous system's sense of safety. Choose one small goal each day: a short walk, preparing a meal, or rejoining a small gathering. These acts re-train both heart and mind to interpret daily life as safe and livable. Over time, movement becomes ease instead of caution.</p>
+
+    <p><strong>The Role of Spiritual Recovery.</strong> Cardiac events often open deeper questions of meaning and mortality. Some survivors find comfort through faith traditions; others through mindfulness, nature, or community service. Research summarized by the Journal of Cardiopulmonary Rehabilitation and Prevention (2021) shows that attending to spiritual wellbeing improves cardiac outcomes and lowers rates of depression. Prayer, meditation, or reflective gratitude help transform the focus from loss to purpose.</p>
+
+    <p><strong>Transforming Fear Into Motivation.</strong> When understood, fear becomes a teacher rather than an enemy. It reminds survivors of life's value and the need for mindful living&mdash;nutritious food, steady care, emotional awareness, and consistent follow-up. The goal is not to erase fear but to master it. Fear evolves into awareness; awareness fosters gratitude; gratitude becomes strength.</p>
+
+    <!-- Meditation -->
+    <div class="meditation">
+      <p class="eyebrow">Guided Meditation</p>
+      <h3>Awakening the Heart</h3>
+      <p>Close your eyes and take a slow, deep breath in &hellip; hold for a moment &hellip; then gently release. Let the quiet settle around you. You have survived much&mdash;and now this stillness is your teacher.</p>
+      <p>Bring your attention to the center of your chest. Notice your heartbeat&mdash;soft, steady, present. Your heart knows the rhythm of survival, but now it learns to beat in peace.</p>
+      <p>Take another breath. As you inhale, imagine drawing in light&mdash;calm, warm, compassionate. As you exhale, let go of numbness, guilt, and the need to feel &ldquo;normal.&rdquo; Let your breath do the work. Healing often begins much quieter than expected.</p>
+      <p>Now visualize soft light flowing through your heart like sunrise across gentle hills. It lifts fog and reveals a new landscape within you&mdash;familiar, yet renewed. You may not feel joy yet, but it is waiting&mdash;like the first bird at dawn.</p>
+      <blockquote class="scripture">
+        &ldquo;The Lord is close to the brokenhearted and saves those who are crushed in spirit.&rdquo;
+        <cite>Psalm 34:18</cite>
+      </blockquote>
+      <p>Let these words rest in you. You are not broken beyond repair; you are being restored through compassion. Each pulse, each tear, each breath declares: Life continues, and so does love.</p>
+      <p>Whisper softly: <span class="whisper">Awaken, my heart, not in fear, but in trust.</span> Feel warmth begin to respond, like tiny embers returning to flame. Sit in this glow of divine presence. Your emotions need time, but life is already stirring.</p>
+      <p>When you open your eyes, carry this truth with you: <span class="whisper">The heart that once ached now beats with grace again.</span></p>
     </div>
+
+    <!-- Workbook -->
+    <div class="callout workbook">
+      <p class="eyebrow">Chapter 1 Workbook</p>
+      <h3>Fear of Another Cardiac Event</h3>
+      <p style="color:var(--ink-soft); margin:0 0 1.8rem; line-height:1.6;">Take your time with each prompt. There are no right or wrong answers&mdash;only opportunities for understanding and growth.</p>
+
+      <p class="prompt"><strong>1.</strong>Think about the moment you realized how serious your heart condition was. What emotions did you feel then, and how have those feelings changed since?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>2.</strong>Describe a time when fear of another cardiac event kept you from doing something you wanted to. How did that make you feel physically and emotionally?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>3.</strong>What helps you feel safe or in control when anxiety about your heart arises? List people, activities, or thoughts that bring you calm.</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>4.</strong>Reflect on one small victory in your recovery that made you realize you were stronger than your fear. What did that experience teach you?</p>
+      <div class="writelines"></div>
+
+      <p class="prompt"><strong>5.</strong>In your own words, what does living&mdash;not just surviving&mdash;mean to you now that you've walked through this experience?</p>
+      <div class="writelines"></div>
+    </div>
+  </article>
+
+  <!-- ============ END CTA ============ -->
+  <section class="ch-end">
+    <img class="hero-cover small" src="images/book-cover.png" alt="Hope After Heart Failure book cover" style="margin-bottom:1.8rem;" />
+    <h3>Continue the Journey</h3>
+    <p>This was Chapter 1 of ten. The full book walks with you from diagnosis through living whole again&mdash;body, mind, spirit, and community.</p>
+    <a class="btn btn-primary" href="index.html#get">Get the Full Book</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
   <!-- share buttons -->
 <section class="share-bar">
-  <p class="share-title">Share the hope — someone you love may need this.</p>
+  <p class="share-title">Share the free chapter — pass the hope along.</p>
   <div class="share-buttons">
-    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopeafterheartfailure.com%2F%3Futm_source%3Dfacebook%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-    <a class="share-btn" href="https://wa.me/?text=Hope%20After%20Heart%20Failure%20%E2%80%94%20A%20Survivor%27s%20Guide%20to%20Living%20Whole%20Again%20https%3A%2F%2Fhopeafterheartfailure.com%2F%3Futm_source%3Dwhatsapp%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-    <a class="share-btn" href="mailto:?subject=Hope%20After%20Heart%20Failure%20%E2%80%94%20A%20Survivor%27s%20Guide%20to%20Living%20Whole%20Again&body=I%20thought%20you%20might%20find%20this%20helpful%3A%0A%0Ahttps%3A%2F%2Fhopeafterheartfailure.com%2F%3Futm_source%3Demail%26utm_medium%3Dshare_button" aria-label="Share by email" title="Share by email"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"/></svg></a>
-    <a class="share-btn" href="https://twitter.com/intent/tweet?text=Hope%20After%20Heart%20Failure%20%E2%80%94%20A%20Survivor%27s%20Guide%20to%20Living%20Whole%20Again&url=https%3A%2F%2Fhopeafterheartfailure.com%2F%3Futm_source%3Dx%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
-    <button class="share-btn" type="button" data-copy="https://hopeafterheartfailure.com/?utm_source=copy_link&amp;utm_medium=share_button" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopeafterheartfailure.com%2Fchapter-1.html%3Futm_source%3Dfacebook%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a class="share-btn" href="https://wa.me/?text=Chapter%201%3A%20Emerging%20from%20Fear%20%E2%80%94%20Hope%20After%20Heart%20Failure%20https%3A%2F%2Fhopeafterheartfailure.com%2Fchapter-1.html%3Futm_source%3Dwhatsapp%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+    <a class="share-btn" href="mailto:?subject=Chapter%201%3A%20Emerging%20from%20Fear%20%E2%80%94%20Hope%20After%20Heart%20Failure&body=I%20thought%20you%20might%20find%20this%20helpful%3A%0A%0Ahttps%3A%2F%2Fhopeafterheartfailure.com%2Fchapter-1.html%3Futm_source%3Demail%26utm_medium%3Dshare_button" aria-label="Share by email" title="Share by email"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"/></svg></a>
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text=Chapter%201%3A%20Emerging%20from%20Fear%20%E2%80%94%20Hope%20After%20Heart%20Failure&url=https%3A%2F%2Fhopeafterheartfailure.com%2Fchapter-1.html%3Futm_source%3Dx%26utm_medium%3Dshare_button" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+    <button class="share-btn" type="button" data-copy="https://hopeafterheartfailure.com/chapter-1.html?utm_source=copy_link&amp;utm_medium=share_button" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
   </div>
   <span class="share-note" aria-live="polite"></span>
 </section>
 
   <footer class="footer">
-    <div class="footer-cols">
-      <div class="footer-brand">
-        <p class="brand"><span class="brand-heart">&#10084;</span> <span class="brand-name">Hope After Heart Failure</span></p>
-        <p>A survivor's guide to living whole again. Written from the inside of the experience, for
-          everyone who has faced heart failure and dared to hope.</p>
-        <p class="copyright">&copy; 2026 Phoenix Rising Media LLC</p>
-      </div>
-      <div class="footer-col">
-        <p class="footer-head">Quick Links</p>
-        <a href="#about">About the Book</a>
-        <a href="blog/">Blog</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-      </div>
-      <div class="footer-col">
-        <p class="footer-head">Support Resources</p>
-        <a href="https://www.heart.org" target="_blank" rel="noopener">American Heart Association</a>
-        <a href="https://mendedhearts.org" target="_blank" rel="noopener">Mended Hearts</a>
-        <a href="https://hfsa.org" target="_blank" rel="noopener">Heart Failure Society of America</a>
-        <a href="https://www.cardiosmart.org" target="_blank" rel="noopener">CardioSmart (ACC)</a>
-      </div>
-    </div>
-    <div class="footer-bar">
-      <p>This website is for informational and inspirational purposes only. It is not a substitute
-        for professional medical advice, diagnosis, or treatment.</p>
-      <p class="footer-url"><span class="gold">&#10084;</span> www.HopeAfterHeartFailure.com</p>
+    <div class="footer-bar" style="justify-content:center; border-top:none;">
+      <p class="footer-url"><span class="gold">&#10084;</span> www.HopeAfterHeartFailure.com &nbsp;&bull;&nbsp; &copy; 2026 Phoenix Rising Media LLC</p>
     </div>
   </footer>
 
@@ -1012,112 +964,6 @@
         document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done();
       }
     });
-  });
-})();
-</script>
-
-<script>
-/* Free-chapter form -> our own Netlify function (which talks to MailerLite's API)
-   + Netlify Forms as a backup record, then straight to the chapter.
-
-   Posting to MailerLite's *form* endpoint from the browser forced double opt-in,
-   leaving subscribers "Unconfirmed" so the welcome automation never fired. The
-   function uses MailerLite's *API* instead, where double opt-in is off, so
-   subscribers arrive Active. It also keeps the API key off the page. */
-(function () {
-  var form = document.getElementById('free-chapter-form');
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var name = form.querySelector('input[name="name"]').value.trim();
-    var email = form.querySelector('input[name="email"]').value.trim();
-    if (!email) return;
-
-    var btn = form.querySelector('button[type="submit"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-
-    /* Same-origin, so we can actually read whether this succeeded - unlike the
-       cross-origin post it replaces. */
-    var toMailerLite = fetch('/.netlify/functions/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ 'name': name, 'email': email })
-    })['catch'](function () {});
-
-    /* Same-origin copy to Netlify Forms. Keeps a record of every lead in case
-       MailerLite rejects one silently. */
-    var toNetlify = fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'free-chapter',
-        'name': name,
-        'email': email
-      })
-    })['catch'](function () {});
-
-    /* Send them to the chapter either way - a slow network must never cost
-       someone the thing they just asked for.
-
-       Note this goes to /chapter-one-full.html, not /chapter-1.html. The latter
-       is the public teaser that stops partway; this is the complete chapter, and
-       giving an email address is what it is in exchange for. */
-    var moved = false;
-    function goToChapter() {
-      if (moved) return;
-      moved = true;
-      window.location.href = '/chapter-one-full.html';
-    }
-    Promise.all([toMailerLite, toNetlify]).then(goToChapter);
-    setTimeout(goToChapter, 2500);
-  });
-})();
-</script>
-
-<form name="book-launch-notify" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input name="bot-field" />
-</form>
-<script>
-(function(){
-  var modal = document.createElement('div');
-  modal.className = 'hahf-modal-overlay';
-  modal.innerHTML =
-    '<div class="hahf-modal" role="dialog" aria-modal="true" aria-labelledby="hahf-modal-title">' +
-    '  <button class="hahf-modal-close" aria-label="Close">&times;</button>' +
-    '  <p class="hahf-modal-eyebrow">Hope After Heart Failure</p>' +
-    '  <h3 id="hahf-modal-title">New Release Coming Soon</h3>' +
-    '  <p>The new edition of <em>Hope After Heart Failure</em> is on its way. Sign up now and you\'ll be notified the moment it\'s released.</p>' +
-    '  <form class="hahf-notify-form">' +
-    '    <input type="text" name="name" placeholder="Your first name" required aria-label="First name" />' +
-    '    <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />' +
-    '    <button type="submit" class="hahf-modal-btn">Sign Up Now for Notification</button>' +
-    '  </form>' +
-    '  <p class="hahf-modal-success">You\'re on the list. You\'ll be the first to know. &#10084;</p>' +
-    '  <p class="hahf-modal-fine">No spam, ever. Unsubscribe anytime.</p>' +
-    '</div>';
-  document.body.appendChild(modal);
-  function openModal(e){ e.preventDefault(); modal.classList.add('open'); }
-  function closeModal(){ modal.classList.remove('open'); }
-  modal.querySelector('.hahf-modal-close').addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
-  var form = modal.querySelector('.hahf-notify-form');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var fname = form.querySelector('input[name="name"]').value.trim();
-    var email = form.querySelector('input[name="email"]').value.trim();
-    if (!email) return;
-    var body = new URLSearchParams({ 'form-name': 'book-launch-notify', 'name': fname, 'email': email }).toString();
-    var done = function(){
-      form.style.display = 'none';
-      modal.querySelector('.hahf-modal-success').style.display = 'block';
-      setTimeout(closeModal, 3500);
-    };
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body }).then(done).catch(done);
   });
 })();
 </script>
