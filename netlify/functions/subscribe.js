@@ -19,11 +19,14 @@
  */
 
 const MAILERLITE_API = "https://connect.mailerlite.com/api";
-const GROUP_NAME = "Free Chapter";
+const DEFAULT_GROUP_NAME = "Free Chapter";
 
-/* Cached between invocations while the function stays warm, so the group lookup
-   usually costs nothing. */
-let cachedGroupId = null;
+/* Cached between invocations while the function stays warm, keyed by group
+   name, so each form's group lookup usually costs nothing after the first
+   call. Populated lazily by resolveGroupId, and by the MAILERLITE_GROUP_ID
+   override below (which always wins for the default group only — a form
+   that names its own list still resolves that name normally). */
+const cachedGroupIds = {};
 
 function authHeaders(apiKey) {
   return {
@@ -33,10 +36,12 @@ function authHeaders(apiKey) {
   };
 }
 
-/** Find the "Free Chapter" group's id by name. Returns null if it can't. */
-async function resolveGroupId(apiKey) {
-  if (process.env.MAILERLITE_GROUP_ID) return process.env.MAILERLITE_GROUP_ID;
-  if (cachedGroupId) return cachedGroupId;
+/** Find a group's id by name (case-insensitive). Returns null if it can't. */
+async function resolveGroupId(apiKey, groupName) {
+  if (groupName === DEFAULT_GROUP_NAME && process.env.MAILERLITE_GROUP_ID) {
+    return process.env.MAILERLITE_GROUP_ID;
+  }
+  if (cachedGroupIds[groupName]) return cachedGroupIds[groupName];
 
   try {
     const response = await fetch(MAILERLITE_API + "/groups?limit=100", {
@@ -50,16 +55,16 @@ async function resolveGroupId(apiKey) {
     const body = await response.json();
     const groups = body && body.data ? body.data : [];
     const match = groups.find(function (g) {
-      return g.name && g.name.toLowerCase() === GROUP_NAME.toLowerCase();
+      return g.name && g.name.toLowerCase() === groupName.toLowerCase();
     });
 
     if (!match) {
-      console.error('No group named "' + GROUP_NAME + '" found');
+      console.error('No group named "' + groupName + '" found');
       return null;
     }
 
-    cachedGroupId = match.id;
-    return cachedGroupId;
+    cachedGroupIds[groupName] = match.id;
+    return cachedGroupIds[groupName];
   } catch (err) {
     console.error("Group lookup failed", err);
     return null;
@@ -90,6 +95,7 @@ exports.handler = async function (event) {
   let name = "";
   let email = "";
   let honeypot = "";
+  let groupName = DEFAULT_GROUP_NAME;
 
   try {
     // The browser sends form-encoded data, same shape as a normal form post.
@@ -97,6 +103,10 @@ exports.handler = async function (event) {
     name = (params.get("name") || "").trim();
     email = (params.get("email") || "").trim();
     honeypot = (params.get("bot-field") || "").trim();
+    // Optional: which MailerLite group this signup belongs to. Forms that
+    // don't send it (the original free-chapter forms) keep landing in
+    // DEFAULT_GROUP_NAME exactly as before.
+    groupName = (params.get("list") || DEFAULT_GROUP_NAME).trim() || DEFAULT_GROUP_NAME;
   } catch (err) {
     return reply(400, { error: "Could not read the submission" });
   }
@@ -118,11 +128,11 @@ exports.handler = async function (event) {
 
   // Group membership is what the welcome automation triggers on. Without it the
   // subscriber exists but receives nothing.
-  const groupId = await resolveGroupId(apiKey);
+  const groupId = await resolveGroupId(apiKey, groupName);
   if (groupId) {
     subscriber.groups = [groupId];
   } else {
-    console.error("No group id available - subscriber will not be grouped");
+    console.error('No group id available for "' + groupName + '" - subscriber will not be grouped');
   }
 
   try {
