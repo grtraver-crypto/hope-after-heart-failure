@@ -76,4 +76,8 @@
     <loc>https://hopeafterheartfailure.com/blog/heart-failure-faq</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/blog/heart-failure-glossary</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
