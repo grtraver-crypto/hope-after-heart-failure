@@ -190,7 +190,16 @@
   </section>
 
   <!-- ============ READER ============ -->
-  <article class="reader">
+  <!-- ============ LOCKED NOTICE (shown until unlocked) ============ -->
+  <div id="ch-locked-msg" class="callout reflection" style="max-width:640px;margin:3rem auto;text-align:center;">
+    <p class="eyebrow">This page is for subscribers</p>
+    <p>Looks like you got here without requesting the free chapter first. No
+    problem &mdash; head back to the homepage and enter your email to unlock
+    the complete Chapter One.</p>
+    <p><a class="btn btn-primary" href="https://hopeafterheartfailure.com/#top">Get the Free Chapter</a></p>
+  </div>
+
+  <article class="reader" id="ch-gated-article" style="display:none">
 
     <!-- Only people who gave their email address reach this page. -->
     <div class="callout reflection">
@@ -335,7 +344,7 @@
   </article>
 
   <!-- ============ END CTA ============ -->
-  <section class="ch-end">
+  <section class="ch-end" id="ch-gated-end" style="display:none">
     <img class="hero-cover small" src="images/book-cover.png" alt="Hope After Heart Failure book cover" style="margin-bottom:1.8rem;" />
     <h3>Continue the Journey</h3>
     <p>This was Chapter 1 of ten. The full book walks with you from diagnosis through living whole again&mdash;body, mind, spirit, and community.</p>
@@ -949,5 +958,22 @@
   });
 })();
 </script>
+  <script>
+    (function () {
+      var unlocked = false;
+      try {
+        unlocked = sessionStorage.getItem('hahf_chapter_unlocked') === '1';
+      } catch (e) {}
+      if (unlocked) {
+        var article = document.getElementById('ch-gated-article');
+        var end = document.getElementById('ch-gated-end');
+        var msg = document.getElementById('ch-locked-msg');
+        if (article) article.style.display = '';
+        if (end) end.style.display = '';
+        if (msg) msg.style.display = 'none';
+      }
+    })();
+  </script>
+
 </body>
 </html>

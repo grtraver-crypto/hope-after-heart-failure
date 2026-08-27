@@ -1041,6 +1041,7 @@
     function goToChapter() {
       if (moved) return;
       moved = true;
+      try { sessionStorage.setItem('hahf_chapter_unlocked', '1'); } catch (e) {}
       window.location.href = '/chapter-one-full.html';
     }
     Promise.all([toMailerLite, toNetlify]).then(goToChapter);
