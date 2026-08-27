@@ -63,6 +63,12 @@ a { color: inherit; text-decoration: none; }
 .btn-primary { background: var(--gold); color: #fff; transition: background .2s; }
 .btn-primary:hover { background: #b3792f; }
 
+.buy-buttons-row { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; }
+@media (max-width: 640px) {
+  .buy-buttons-row { flex-direction: column; align-items: stretch; }
+  .buy-buttons-row .btn { text-align: center; }
+}
+
 /* ========== NAV ========== */
 .nav {
   max-width: var(--maxw);
