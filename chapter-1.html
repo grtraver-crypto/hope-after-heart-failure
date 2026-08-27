@@ -30,7 +30,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="styles.css" />
 
   <style>
@@ -357,7 +359,7 @@
 
   <!-- ============ END CTA ============ -->
   <section class="ch-end">
-    <img class="hero-cover small" src="images/book-cover.png" alt="Hope After Heart Failure book cover" style="margin-bottom:1.8rem;" />
+    <img class="hero-cover small" src="images/book-cover.webp" alt="Hope After Heart Failure book cover" width="800" height="800" style="margin-bottom:1.8rem;" />
     <h3>Continue the Journey</h3>
     <p>This was Chapter 1 of ten. The full book walks with you from diagnosis through living whole again&mdash;body, mind, spirit, and community.</p>
     <a class="btn btn-primary" href="https://hopeafterheartfailure.com/#get">Get the Full Book</a>
