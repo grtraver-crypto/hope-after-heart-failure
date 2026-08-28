@@ -80,4 +80,8 @@
     <loc>https://hopeafterheartfailure.com/blog/heart-failure-glossary</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://hopeafterheartfailure.com/daily-assessment-log</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
