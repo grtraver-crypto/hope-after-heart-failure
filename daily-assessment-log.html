@@ -144,7 +144,7 @@
       free, no strings attached.
     </p>
 
-    <form id="daily-log-form" class="hero-capture" name="daily-log" method="POST" action="/resources/Heart%20Failure%20Self-Monitoring%20Log.dc.html" data-netlify="true" netlify-honeypot="bot-field">
+    <form id="daily-log-form" class="hero-capture" name="daily-log" method="POST" action="/resources/Heart%20Failure%20Self-Monitoring%20Log.pdf" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="daily-log" />
       <input type="hidden" name="list" value="Daily Log" />
       <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
@@ -198,7 +198,7 @@
       function goToLog() {
         if (moved) return;
         moved = true;
-        window.location.href = '/resources/Heart%20Failure%20Self-Monitoring%20Log.dc.html';
+        window.location.href = '/resources/Heart%20Failure%20Self-Monitoring%20Log.pdf';
       }
       Promise.all([toMailerLite, toNetlify]).then(goToLog);
       setTimeout(goToLog, 2500);
