@@ -104,3 +104,12 @@ transition:background .2s,color .2s,transform .15s;padding:0}
 .hahf-modal .hahf-modal-btn:hover{background:#b3792f}
 .hahf-modal-fine{font-size:.78rem;color:var(--ink-soft);margin:0.9rem 0 0}
 .hahf-modal-success{display:none;font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--navy);padding:14px 0 4px}
+
+/* ===== Related articles (Continue Reading) ===== */
+.related-posts{max-width:760px;margin:2.5rem auto 0;padding:0 2rem}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.related-card{background:#fff;border:1px solid var(--cream-2);padding:1.3rem 1.2rem;display:block;transition:box-shadow .2s,transform .2s}
+.related-card:hover{box-shadow:0 8px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.related-kicker{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin:0 0 .5rem}
+.related-card h4{font-size:1.02rem;margin:0;color:var(--navy);line-height:1.35}
+@media(max-width:820px){.related-grid{grid-template-columns:1fr}}
